@@ -12,14 +12,14 @@
   <meta name="description" content="2026년 최신 4대보험 요율이 적용된 연봉 실수령액 계산기, 실업급여 모의계산, 퇴직금 계산기, 대출이자 계산기, 프리랜서 3.3% 계산기를 무료로 이용해보세요.">
   <meta name="keywords" content="2026 연봉 실수령액, 연봉 계산기, 4대보험 계산기, 실업급여 계산기, 퇴직금 계산기, 대출이자 계산기, 프리랜서 3.3%, DSR 계산기">
   <meta name="author" content="머니닥터 (MoneyDoctor)">
-  <link rel="canonical" href="https://money.hap-py.us/">
+  <link rel="canonical" href="https://hap-py.us/">
 
   <!-- Open Graph / SNS 공유 -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="머니닥터 - 2026 연봉 실수령액 & 금융 올인원 계산기">
   <meta property="og:description" content="최신 4대보험 요율 반영! 연봉 실수령액, 실업급여, 퇴직금, 대출이자를 1초만에 정확하게 계산하세요.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&q=80">
-  <meta property="og:url" content="https://money.hap-py.us/">
+  <meta property="og:url" content="https://hap-py.us/">
 
   <!-- Tailwind CSS & Lucide Icons & Chart.js -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -982,7 +982,7 @@
     function copySalaryResult() {
       const net = document.getElementById('result-monthly-net').innerText.trim();
       const annual = document.getElementById('salary-input').value;
-      const text = `[머니닥터 2026 연봉 계산기 결과]\n연봉 ${annual}원 기준\n▶ 월 실수령액: ${net}\n자세히 보기: https://money.hap-py.us/`;
+      const text = `[머니닥터 2026 연봉 계산기 결과]\n연봉 ${annual}원 기준\n▶ 월 실수령액: ${net}\n자세히 보기: https://hap-py.us/`;
       navigator.clipboard.writeText(text).then(() => {
         const btn = document.getElementById('copy-btn-text');
         btn.innerText = '복사 완료!';
