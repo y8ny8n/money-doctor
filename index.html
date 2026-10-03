@@ -355,16 +355,11 @@
         </div>
         
         <!-- 쿠팡 배너 삽입 영역 -->
-        <div id="coupang-banner-slot" class="w-full flex items-center justify-center min-h-[110px] rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-dashed border-slate-200 dark:border-slate-700/60 p-4 text-center">
-          <div class="space-y-1">
-            <div class="flex items-center justify-center space-x-1.5 text-rose-500 text-xs font-semibold">
-              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-              <span>쿠팡 파트너스 상품 배너 위젯 영역</span>
-            </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md">
-              쿠팡 파트너스에서 생성한 <strong>다이나믹 배너 코드(HTML/iframe)</strong>를 복사해서 주시면 이 자리에 실시간 상품이 자동 진열됩니다.
-            </p>
-          </div>
+        <div id="coupang-banner-slot" class="w-full flex items-center justify-center min-h-[140px] overflow-hidden rounded-xl py-1">
+          <script src="https://ads-partners.coupang.com/g.js"></script>
+          <script>
+            new PartnersCoupang.G({"id":1035522,"template":"carousel","trackingCode":"AF6212198","width":"680","height":"140","tsource":""});
+          </script>
         </div>
         <p class="text-[10px] text-slate-400 dark:text-slate-500 text-center mt-2.5">
           ※ 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
