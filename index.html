@@ -392,14 +392,21 @@
             <div>
               <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">퇴사 전 3개월 월 평균 급여 (세전)</label>
               <div class="relative">
-                <input type="text" id="unemp-monthly-pay" value="3,200,000" class="w-full pl-3 pr-8 py-2.5 text-base font-bold rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+                <input type="text" id="unemp-monthly-pay" value="3,200,000" oninput="calculateUnemployment()" class="w-full pl-3 pr-8 py-2.5 text-base font-bold rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
                 <span class="absolute right-3 top-3 text-xs text-slate-400 font-medium">원</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <button type="button" onclick="setUnempPay(2000000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">200만</button>
+                <button type="button" onclick="setUnempPay(2500000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">250만</button>
+                <button type="button" onclick="setUnempPay(3250000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">325만</button>
+                <button type="button" onclick="setUnempPay(4000000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">400만</button>
+                <button type="button" onclick="setUnempPay(5000000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">500만</button>
               </div>
             </div>
 
             <div>
               <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">1일 소정 근로시간</label>
-              <select id="unemp-hours" class="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
+              <select id="unemp-hours" onchange="calculateUnemployment()" class="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none">
                 <option value="8" selected>8시간 (주 40시간 통상 근무)</option>
                 <option value="7">7시간</option>
                 <option value="6">6시간</option>
@@ -419,28 +426,36 @@
 
             <div class="my-5">
               <div class="text-3xl sm:text-4xl font-extrabold text-teal-600 dark:text-teal-400 tracking-tight" id="unemp-total-result">
-                9,900,000 <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>
+                9,628,800 <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1" id="unemp-monthly-avg-text">월 평균 약 1,980,000원씩 수급 (30일 기준)</div>
+              <div class="text-xs text-slate-400 mt-1" id="unemp-monthly-avg-text">월 평균 약 1,925,760원씩 수급 (30일 기준)</div>
             </div>
 
-            <div class="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
+            <div class="space-y-2.5 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
               <div class="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-800/60">
-                <span class="text-slate-600 dark:text-slate-400">1일 구직급여 지급액</span>
-                <span class="font-mono font-bold text-slate-800 dark:text-slate-200" id="unemp-daily-pay">66,000원 (상한액 적용)</span>
+                <span class="text-slate-600 dark:text-slate-400">1일 평균임금 (월급÷30일)</span>
+                <span class="font-mono font-semibold text-slate-800 dark:text-slate-200" id="unemp-daily-avg">106,667원</span>
+              </div>
+              <div class="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-800/60">
+                <span class="text-slate-600 dark:text-slate-400">평균임금의 60% (산출 기초일액)</span>
+                <span class="font-mono font-bold text-blue-600 dark:text-blue-400" id="unemp-raw-benefit">64,000원</span>
+              </div>
+              <div class="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-800/60">
+                <span class="text-slate-600 dark:text-slate-400">최종 1일 구직급여 적용액</span>
+                <span class="font-mono font-extrabold text-teal-600 dark:text-teal-400" id="unemp-daily-pay">64,192원 (하한액 적용)</span>
               </div>
               <div class="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-800/60">
                 <span class="text-slate-600 dark:text-slate-400">총 지급 일수 (소정급여일수)</span>
                 <span class="font-mono font-bold text-slate-800 dark:text-slate-200" id="unemp-days-text">150일 (약 5개월)</span>
               </div>
-              <div class="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-800/60">
-                <span class="text-slate-600 dark:text-slate-400">2026 하한액 기준 (최저임금의 80%)</span>
-                <span class="font-mono font-medium text-slate-500 dark:text-slate-400" id="unemp-min-rate-text">1일 약 64,192원 (8시간 기준)</span>
-              </div>
               <div class="flex justify-between items-center py-1">
-                <span class="text-slate-600 dark:text-slate-400">법정 1일 상한액</span>
-                <span class="font-mono font-medium text-slate-500 dark:text-slate-400">66,000원</span>
+                <span class="text-slate-600 dark:text-slate-400">2026 기준 법정 상한액 / 하한액</span>
+                <span class="font-mono font-medium text-slate-500 dark:text-slate-400" id="unemp-min-rate-text">최대 66,000원 / 최소 64,192원</span>
               </div>
+            </div>
+
+            <!-- 동적 법정 상·하한액 해설 박스 -->
+            <div id="unemp-status-box" class="mt-4 p-3.5 rounded-xl border text-xs leading-relaxed">
             </div>
 
             <div class="mt-5 p-3.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 rounded-xl text-xs text-amber-800 dark:text-amber-300 flex items-start space-x-2">
@@ -1111,7 +1126,12 @@
       });
     }
 
-    // ================= 2. 실업급여 계산 로직 (2026 최신 최저임금 반영) =================
+    function setUnempPay(amount) {
+      document.getElementById('unemp-monthly-pay').value = formatNumber(amount);
+      calculateUnemployment();
+    }
+
+    // ================= 2. 실업급여 계산 로직 (2026 최신 최저임금 반영 및 동적 안내) =================
     function calculateUnemployment() {
       const age = document.getElementById('unemp-age').value;
       const period = document.getElementById('unemp-period').value;
@@ -1119,15 +1139,23 @@
       const hours = Number(document.getElementById('unemp-hours').value) || 8;
 
       // 1일 평균임금 (월급 / 30일)
-      const dailyAvg = monthlyPay / 30;
-      let dailyBenefit = dailyAvg * 0.6; // 기초일액 60%
+      const dailyAvg = monthlyPay > 0 ? (monthlyPay / 30) : 0;
+      const rawDailyBenefit = Math.round(dailyAvg * 0.6); // 기초일액 60%
 
       // 2026년 기준 상한액 및 최저임금(10,030원) 기준 하한액
-      const maxDaily = 66000;
+      const maxDaily = Math.round(66000 * (hours / 8));
       const minDaily = Math.floor(10030 * 0.8 * hours);
 
-      if (dailyBenefit > maxDaily) dailyBenefit = maxDaily;
-      if (dailyBenefit < minDaily) dailyBenefit = minDaily;
+      let finalDaily = rawDailyBenefit;
+      let limitType = 'normal'; // 'max' or 'min' or 'normal'
+
+      if (finalDaily >= maxDaily) {
+        finalDaily = maxDaily;
+        limitType = 'max';
+      } else if (finalDaily <= minDaily) {
+        finalDaily = minDaily;
+        limitType = 'min';
+      }
 
       // 소정급여일수
       let days = 120;
@@ -1145,16 +1173,56 @@
         else if (period === 'p5') days = 270;
       }
 
-      const totalBenefit = dailyBenefit * days;
+      const totalBenefit = finalDaily * days;
       const months = (days / 30).toFixed(1);
-      const monthlyAvg = Math.round(dailyBenefit * 30);
+      const monthlyAvg = Math.round(finalDaily * 30);
 
-      document.getElementById('unemp-badge-days').innerText = `소정급여일수 ${days}일`;
+      document.getElementById('unemp-badge-days').innerText = `소정급여일수 ${days}일 (${months}개월)`;
       document.getElementById('unemp-total-result').innerHTML = `${formatNumber(totalBenefit)} <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>`;
-      document.getElementById('unemp-daily-pay').innerText = `${formatNumber(dailyBenefit)}원 ${dailyBenefit >= maxDaily ? '(상한액 적용)' : (dailyBenefit <= minDaily ? '(하한액 적용)' : '')}`;
-      document.getElementById('unemp-days-text').innerText = `${days}일 (약 ${months}개월)`;
       document.getElementById('unemp-monthly-avg-text').innerText = `월 평균 약 ${formatNumber(monthlyAvg)}원씩 수급 (30일 기준)`;
-      document.getElementById('unemp-min-rate-text').innerText = `1일 약 ${formatNumber(minDaily)}원 (${hours}시간 기준)`;
+      
+      document.getElementById('unemp-daily-avg').innerText = `${formatNumber(dailyAvg)}원`;
+      document.getElementById('unemp-raw-benefit').innerText = `${formatNumber(rawDailyBenefit)}원`;
+      document.getElementById('unemp-days-text').innerText = `${days}일 (약 ${months}개월)`;
+      document.getElementById('unemp-min-rate-text').innerText = `상한 ${formatNumber(maxDaily)}원 / 하한 ${formatNumber(minDaily)}원`;
+
+      const statusBox = document.getElementById('unemp-status-box');
+      if (statusBox) {
+        if (limitType === 'max') {
+          document.getElementById('unemp-daily-pay').innerHTML = `<span class="text-rose-600 dark:text-rose-400 font-bold">${formatNumber(finalDaily)}원 (상한액 제한)</span>`;
+          statusBox.className = 'mt-4 p-3.5 rounded-xl border border-rose-200 dark:border-rose-900 bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-300 text-xs leading-relaxed';
+          statusBox.innerHTML = `
+            <div class="font-bold flex items-center space-x-1 mb-1">
+              <span>🔴 법정 최고 상한액(${formatNumber(maxDaily)}원) 적용 중</span>
+            </div>
+            <div>
+              입력하신 월급(${formatNumber(monthlyPay)}원) 기준 1일 수급액은 원래 <strong>${formatNumber(rawDailyBenefit)}원</strong>이어야 하지만, 고용보험법 제45조에 따라 <strong>1일 최고 지급액이 ${formatNumber(maxDaily)}원(월 330만원 이상 근로자)으로 법적으로 제한</strong>됩니다. 따라서 월급을 더 높여도 1일 수급액은 ${formatNumber(maxDaily)}원으로 고정됩니다.
+            </div>
+          `;
+        } else if (limitType === 'min') {
+          document.getElementById('unemp-daily-pay').innerHTML = `<span class="text-emerald-600 dark:text-emerald-400 font-bold">${formatNumber(finalDaily)}원 (하한액 보장)</span>`;
+          statusBox.className = 'mt-4 p-3.5 rounded-xl border border-emerald-200 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 text-xs leading-relaxed';
+          statusBox.innerHTML = `
+            <div class="font-bold flex items-center space-x-1 mb-1">
+              <span>🟢 최저임금 보장 하한액(${formatNumber(minDaily)}원) 자동 상향</span>
+            </div>
+            <div>
+              입력하신 월급(${formatNumber(monthlyPay)}원) 기준 1일 수급액은 원래 <strong>${formatNumber(rawDailyBenefit)}원</strong>이지만, 근로자 생계 보호를 위해 <strong>2026년 법정 최저임금의 80% 하한선인 ${formatNumber(minDaily)}원으로 자동 올려서 지급</strong>됩니다.
+            </div>
+          `;
+        } else {
+          document.getElementById('unemp-daily-pay').innerHTML = `<span class="text-blue-600 dark:text-blue-400 font-bold">${formatNumber(finalDaily)}원 (기초일액 60%)</span>`;
+          statusBox.className = 'mt-4 p-3.5 rounded-xl border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/40 text-blue-800 dark:text-blue-300 text-xs leading-relaxed';
+          statusBox.innerHTML = `
+            <div class="font-bold flex items-center space-x-1 mb-1">
+              <span>🔵 평균임금의 60% 정상 적용</span>
+            </div>
+            <div>
+              상한액과 하한액 범위 내에서 월 급여의 60%가 온전하게 1일 구직급여(${formatNumber(finalDaily)}원)로 반영되고 있습니다.
+            </div>
+          `;
+        }
+      }
     }
 
     // ================= 3. 퇴직금 & 세후 실수령액 정밀 계산 =================
