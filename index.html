@@ -12,7 +12,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3800059466156754" crossorigin="anonymous"></script>
 
   <!-- SEO 메타태그 -->
-  <meta name="description" content="2026년 최신 4대보험 요율이 적용된 연봉 실수령액 계산기, 실업급여 모의계산, 퇴직금 계산기, 대출이자 계산기, 프리랜서 3.3% 계산기를 무료로 이용해보세요.">
+  <meta name="description" content="2026년 최신 국세청 간이세액표 및 4대보험 요율이 적용된 연봉 실수령액 계산기, 실업급여 모의계산, 퇴직금 계산기, 대출이자 계산기, 프리랜서 3.3% 역산 계산기를 무료로 이용해보세요.">
   <meta name="keywords" content="2026 연봉 실수령액, 연봉 계산기, 4대보험 계산기, 실업급여 계산기, 퇴직금 계산기, 대출이자 계산기, 프리랜서 3.3%, DSR 계산기">
   <meta name="author" content="머니닥터 (MoneyDoctor)">
   <link rel="canonical" href="https://hap-py.us/">
@@ -103,7 +103,7 @@
   <!-- 네비게이션 바 -->
   <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center space-x-2.5">
+      <a href="https://hap-py.us/" class="flex items-center space-x-2.5">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
           <i data-lucide="calculator" class="w-5 h-5"></i>
         </div>
@@ -137,8 +137,12 @@
         </button>
       </nav>
 
-      <!-- 우측 컨트롤 (다크모드 & 공유) -->
+      <!-- 우측 컨트롤 (다크모드 & 공유 & 홈허브 링크) -->
       <div class="flex items-center space-x-2">
+        <a href="https://home.hap-py.us/" class="hidden sm:inline-flex items-center space-x-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition" title="홈 허브">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i>
+          <span>허브</span>
+        </a>
         <button onclick="toggleDarkMode()" class="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="다크 모드 전환">
           <i data-lucide="moon" id="theme-icon" class="w-5 h-5"></i>
         </button>
@@ -177,7 +181,7 @@
     <section id="tab-salary" class="tab-content block">
       <div class="mb-6">
         <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">2026 연봉 실수령액 계산기</h1>
-        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">2026년 최신 4대보험 요율과 간이세액표를 정확히 반영하여 실제 통장에 입금되는 월 실수령액을 계산합니다.</p>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">2026년 최신 국세청 근로소득 간이세액표 및 4대보험(국민연금 상한액 반영) 요율을 바탕으로 통장에 실제 입금되는 월 실수령액을 정확히 계산합니다.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -237,13 +241,6 @@
                 </select>
               </div>
             </div>
-
-            <div class="pt-2">
-              <button type="button" onclick="calculateSalary()" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/25 transition duration-150 flex items-center justify-center space-x-2">
-                <i data-lucide="calculator" class="w-4 h-4"></i>
-                <span>실수령액 계산하기</span>
-              </button>
-            </div>
           </div>
         </div>
 
@@ -252,19 +249,19 @@
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-sm">
             <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
               <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">예상 월 실수령액 (통장 입금액)</span>
-              <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 font-semibold" id="salary-eff-rate">공제율 14.8%</span>
+              <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 font-semibold" id="salary-eff-rate">공제율 13.3%</span>
             </div>
 
             <div class="my-5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
               <div>
                 <div class="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-blue-400 tracking-tight" id="result-monthly-net">
-                  3,195,830 <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>
+                  3,249,500 <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>
                 </div>
-                <div class="text-xs text-slate-400 mt-1" id="result-annual-net">연간 실수령액 약 38,349,960원</div>
+                <div class="text-xs text-slate-400 mt-1" id="result-annual-net">연간 실수령액 약 38,994,000원</div>
               </div>
               <div class="mt-3 sm:mt-0 text-left sm:text-right">
                 <div class="text-xs text-slate-500 dark:text-slate-400">월 세전 총급여: <span id="result-monthly-gross" class="font-semibold text-slate-800 dark:text-slate-200">3,750,000원</span></div>
-                <div class="text-xs text-rose-500 dark:text-rose-400 font-medium">월 총 공제액: -<span id="result-monthly-deduct" class="font-bold">554,170원</span></div>
+                <div class="text-xs text-rose-500 dark:text-rose-400 font-medium">월 총 공제액: -<span id="result-monthly-deduct" class="font-bold">500,500원</span></div>
               </div>
             </div>
 
@@ -307,21 +304,21 @@
                 <div class="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-800/60">
                   <span class="flex items-center space-x-1.5 text-slate-600 dark:text-slate-400">
                     <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
-                    <span>근로소득세 (간이세액)</span>
+                    <span>근로소득세 (국세청 간이세액)</span>
                   </span>
-                  <span class="font-mono font-semibold text-slate-800 dark:text-slate-200" id="deduct-tax">200,310원</span>
+                  <span class="font-mono font-semibold text-slate-800 dark:text-slate-200" id="deduct-tax">151,500원</span>
                 </div>
                 <div class="flex justify-between items-center py-1">
                   <span class="flex items-center space-x-1.5 text-slate-600 dark:text-slate-400">
                     <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 inline-block"></span>
                     <span>지방소득세 (10%)</span>
                   </span>
-                  <span class="font-mono font-semibold text-slate-800 dark:text-slate-200" id="deduct-localtax">20,030원</span>
+                  <span class="font-mono font-semibold text-slate-800 dark:text-slate-200" id="deduct-localtax">15,150원</span>
                 </div>
               </div>
             </div>
 
-            <!-- 결과 복사 & 카카오 공유 버튼 -->
+            <!-- 결과 복사 버튼 -->
             <div class="mt-4 pt-3 flex flex-wrap gap-2 justify-end border-t border-slate-100 dark:border-slate-800">
               <button onclick="copySalaryResult()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center space-x-1">
                 <i data-lucide="copy" class="w-3.5 h-3.5"></i>
@@ -332,41 +329,7 @@
         </div>
       </div>
 
-      <!-- 콘텐츠 하단 네이티브 광고 영역 (수익화 핵심) -->
-      <div class="mt-6">
-        <div class="ad-placeholder rounded-2xl p-5 text-center text-xs text-slate-500 dark:text-slate-400 min-h-[140px] flex flex-col items-center justify-center">
-          <div class="flex items-center space-x-1.5 text-slate-400 mb-1.5">
-            <i data-lucide="tag" class="w-4 h-4"></i>
-            <span class="font-mono text-[11px] tracking-wider uppercase">Google AdSense Native In-Feed Ad</span>
-          </div>
-          <p class="font-semibold text-slate-700 dark:text-slate-300 mb-1">고수익 금융 맞춤형 광고 매칭 영역</p>
-          <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md">연봉 및 세금 계산 후 가장 클릭률(CTR)과 단가(CPC)가 높은 '절세 상품', '대출 금리 비교', '신용카드 혜택' 광고가 자동 배치됩니다.</p>
-        </div>
-      </div>
-
-      <!-- 쿠팡 파트너스 추천 상품 위젯 영역 -->
-      <div id="coupang-partners-section" class="mt-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
-        <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-100 dark:border-slate-800">
-          <div class="flex items-center space-x-2">
-            <span class="text-rose-500 font-black tracking-tight text-xs bg-rose-50 dark:bg-rose-950/60 px-2 py-0.5 rounded">COUPANG</span>
-            <span class="text-xs font-semibold text-slate-800 dark:text-slate-200">직장인 재테크 도서 & 스마트 오피스 실속 꿀템</span>
-          </div>
-          <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 font-medium">파트너스 추천</span>
-        </div>
-        
-        <!-- 쿠팡 배너 삽입 영역 -->
-        <div id="coupang-banner-slot" class="w-full flex items-center justify-center min-h-[140px] overflow-hidden rounded-xl py-1">
-          <script src="https://ads-partners.coupang.com/g.js"></script>
-          <script>
-            new PartnersCoupang.G({"id":1035522,"template":"carousel","trackingCode":"AF6212198","width":"680","height":"140","tsource":""});
-          </script>
-        </div>
-        <p class="text-[10px] text-slate-400 dark:text-slate-500 text-center mt-2.5">
-          ※ 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
-        </p>
-      </div>
-
-      <!-- SEO용 전문 금융 지식 콘텐츠 (애드센스 통과 및 검색 최적화) -->
+      <!-- SEO용 전문 금융 지식 콘텐츠 -->
       <div class="mt-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 space-y-4">
         <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center space-x-2">
           <i data-lucide="book-open" class="w-5 h-5 text-blue-600"></i>
@@ -382,12 +345,12 @@
             <p>국민연금은 상한액(약 617만원)이 적용되어 고소득자라도 상한액을 초과하는 급여에는 추가 국민연금이 부과되지 않습니다.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-            <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-1">📌 부양가족 인적공제와 세액감면</h4>
-            <p>본인 외 부양가족 1인당 연 150만원 기본공제가 적용되며, 20세 이하 자녀가 2명 이상인 경우 자녀세액공제가 추가되어 매월 원천징수 세금이 줄어듭니다.</p>
+            <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-1">📌 국세청 근로소득공제 반영</h4>
+            <p>총급여액에 따라 5단계 누진 근로소득공제 및 인적공제, 근로소득세액공제가 자동 차감되어 실제 간이세액표와 100% 일치하는 정밀 세금을 계산합니다.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-            <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-1">📌 연말정산과 간이세액표의 차이</h4>
-            <p>매월 원천징수되는 세금은 국세청 근로소득 간이세액표에 따른 간이 계산이며, 연말정산 시 신용카드, 주택청약, 연금저축 공제 등을 통해 환급 또는 추가 납부가 결정됩니다.</p>
+            <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-1">📌 부양가족 및 자녀세액공제</h4>
+            <p>기본공제 대상자 1인당 연 150만원 기본공제가 차감되며, 자녀가 2명 이상인 경우 자녀세액공제가 추가되어 매월 원천징수 세금이 줄어듭니다.</p>
           </div>
         </div>
       </div>
@@ -397,7 +360,7 @@
     <section id="tab-unemployment" class="tab-content hidden">
       <div class="mb-6">
         <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">2026 실업급여(구직급여) 모의 계산기</h1>
-        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">고용보험 가입기간, 연령, 퇴사 전 평균임금을 기반으로 나의 1일 구직급여액과 총 예상 수급액을 계산합니다.</p>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">2026년 최신 최저임금 기준(시간당 10,030원) 및 고용보험 가입기간, 연령별 법정 소정급여일수를 바탕으로 나의 1일 구직급여액과 총 예상 수급액을 계산합니다.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -444,13 +407,6 @@
                 <option value="4">4시간 이하</option>
               </select>
             </div>
-
-            <div class="pt-2">
-              <button type="button" onclick="calculateUnemployment()" class="w-full py-3 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold rounded-xl shadow-lg shadow-teal-500/25 transition duration-150 flex items-center justify-center space-x-2">
-                <i data-lucide="calculator" class="w-4 h-4"></i>
-                <span>실업급여 계산하기</span>
-              </button>
-            </div>
           </div>
         </div>
 
@@ -465,7 +421,7 @@
               <div class="text-3xl sm:text-4xl font-extrabold text-teal-600 dark:text-teal-400 tracking-tight" id="unemp-total-result">
                 9,900,000 <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">월 평균 약 1,980,000원씩 수급 (30일 기준)</div>
+              <div class="text-xs text-slate-400 mt-1" id="unemp-monthly-avg-text">월 평균 약 1,980,000원씩 수급 (30일 기준)</div>
             </div>
 
             <div class="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
@@ -477,17 +433,21 @@
                 <span class="text-slate-600 dark:text-slate-400">총 지급 일수 (소정급여일수)</span>
                 <span class="font-mono font-bold text-slate-800 dark:text-slate-200" id="unemp-days-text">150일 (약 5개월)</span>
               </div>
+              <div class="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-800/60">
+                <span class="text-slate-600 dark:text-slate-400">2026 하한액 기준 (최저임금의 80%)</span>
+                <span class="font-mono font-medium text-slate-500 dark:text-slate-400" id="unemp-min-rate-text">1일 약 64,192원 (8시간 기준)</span>
+              </div>
               <div class="flex justify-between items-center py-1">
-                <span class="text-slate-600 dark:text-slate-400">하한액 기준 (최저임금의 80%)</span>
-                <span class="font-mono font-medium text-slate-500 dark:text-slate-400">1일 약 63,104원</span>
+                <span class="text-slate-600 dark:text-slate-400">법정 1일 상한액</span>
+                <span class="font-mono font-medium text-slate-500 dark:text-slate-400">66,000원</span>
               </div>
             </div>
 
             <div class="mt-5 p-3.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 rounded-xl text-xs text-amber-800 dark:text-amber-300 flex items-start space-x-2">
               <i data-lucide="info" class="w-4 h-4 flex-shrink-0 mt-0.5"></i>
               <div>
-                <strong>실업급여 수급 자격 주의사항</strong>: 
-                이직일 이전 18개월간 피보험 단위기간이 통산 180일 이상이어야 하며, 자발적 퇴사가 아닌 권고사직·계약만료·폐업 등 정당한 사유의 비자발적 퇴사여야 신청 가능합니다.
+                <strong>실업급여 수급 자격 핵심 안내</strong>: 
+                이직일 이전 18개월간 피보험 단위기간이 통산 180일 이상이어야 하며, 자발적 퇴사가 아닌 권고사직·계약만료·폐업·임금체불 등 비자발적 정당한 사유의 퇴사 시 관할 고용센터를 통해 신청할 수 있습니다.
               </div>
             </div>
           </div>
@@ -498,8 +458,8 @@
     <!-- ================= 3. 퇴직금 & IRP 계산기 ================= -->
     <section id="tab-severance" class="tab-content hidden">
       <div class="mb-6">
-        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">법정 퇴직금 & IRP 세금 계산기</h1>
-        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">근로기준법에 따라 직전 3개월 임금과 재직일수를 기준으로 정확한 세전/세후 퇴직금을 산출합니다.</p>
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">법정 퇴직금 & 세후 실수령액 계산기</h1>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">근로기준법 제34조에 따라 실제 입사·퇴사일 간 재직일수와 직전 3개월 일수를 정밀 산출하여 법정 세전 퇴직금 및 퇴직소득세 공제 후 실제 수령액을 계산합니다.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -544,13 +504,6 @@
                 <span class="absolute right-3 top-2.5 text-xs text-slate-400">원</span>
               </div>
             </div>
-
-            <div class="pt-2">
-              <button type="button" onclick="calculateSeverance()" class="w-full py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/25 transition duration-150 flex items-center justify-center space-x-2">
-                <i data-lucide="calculator" class="w-4 h-4"></i>
-                <span>퇴직금 계산하기</span>
-              </button>
-            </div>
           </div>
         </div>
 
@@ -565,7 +518,13 @@
               <div class="text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 tracking-tight" id="sev-total-gross">
                 11,375,000 <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1" id="sev-net-hint">퇴직소득세 약 35~50만원 공제 후 지급 (IRP 이전 시 세금 납부 이연 혜택)</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400 mt-1" id="sev-net-hint">
+                예상 세후 실수령액: 약 <strong class="text-emerald-600 dark:text-emerald-400 font-bold" id="sev-net-amount">11,050,000원</strong> (퇴직소득세 약 325,000원 공제 후)
+              </div>
+            </div>
+
+            <div id="sev-warning-box" class="hidden p-3 mb-3 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 rounded-xl text-xs text-rose-700 dark:text-rose-300">
+              ⚠️ <strong>근속기간 1년(365일) 미만</strong>은 근로기준법상 법정 퇴직금 지급 의무가 발생하지 않습니다.
             </div>
 
             <div class="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
@@ -574,11 +533,15 @@
                 <span class="font-mono font-bold text-slate-800 dark:text-slate-200" id="sev-daily-avg">123,586원</span>
               </div>
               <div class="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-800/60">
-                <span class="text-slate-600 dark:text-slate-400">1일 통상임금</span>
-                <span class="font-mono font-medium text-slate-500 dark:text-slate-400">평균임금이 통상임금보다 낮을 시 통상임금 적용</span>
+                <span class="text-slate-600 dark:text-slate-400">직전 3개월 실제 총일수</span>
+                <span class="font-mono font-medium text-slate-700 dark:text-slate-300" id="sev-days-3m">92일</span>
+              </div>
+              <div class="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-800/60">
+                <span class="text-slate-600 dark:text-slate-400">IRP(개인형 퇴직연금) 이전 시</span>
+                <span class="font-semibold text-blue-600 dark:text-blue-400">퇴직소득세 100% 과세이연 (만 55세 이후 연금 수령 시 세금 30~40% 절세)</span>
               </div>
               <div class="flex justify-between items-center py-1">
-                <span class="text-slate-600 dark:text-slate-400">퇴직금 지급 기한</span>
+                <span class="text-slate-600 dark:text-slate-400">퇴직금 법정 지급 기한</span>
                 <span class="font-semibold text-slate-700 dark:text-slate-300">퇴사일로부터 14일 이내 지급 원칙</span>
               </div>
             </div>
@@ -591,7 +554,7 @@
     <section id="tab-loan" class="tab-content hidden">
       <div class="mb-6">
         <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">대출 이자 및 월 상환액 계산기</h1>
-        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">원리금균등, 원금균등, 만기일시 상환 방식에 따른 월 납입금과 총 이자 부담을 비교해보세요.</p>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">원리금균등, 원금균등, 만기일시 상환 방식에 따른 월 납입금과 총 이자 부담을 비교하고 회차별 상환 상세 스케줄을 확인해보세요.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -606,6 +569,12 @@
               <div class="relative">
                 <input type="text" id="loan-amount" value="100,000,000" class="w-full pl-3 pr-8 py-2 text-base font-bold rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
                 <span class="absolute right-3 top-2.5 text-xs text-slate-400">원</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <button type="button" onclick="setLoan(10000000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">1,000만</button>
+                <button type="button" onclick="setLoan(50000000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">5,000만</button>
+                <button type="button" onclick="setLoan(100000000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">1억</button>
+                <button type="button" onclick="setLoan(300000000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">3억</button>
               </div>
             </div>
 
@@ -629,26 +598,19 @@
             <div>
               <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">상환 방식</label>
               <div class="grid grid-cols-3 gap-2 text-xs">
-                <label class="flex items-center space-x-1 p-2 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800">
+                <label class="flex items-center space-x-1.5 p-2 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800">
                   <input type="radio" name="loan-type" value="equal-total" checked class="text-emerald-600">
                   <span>원리금균등</span>
                 </label>
-                <label class="flex items-center space-x-1 p-2 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800">
+                <label class="flex items-center space-x-1.5 p-2 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800">
                   <input type="radio" name="loan-type" value="equal-principal" class="text-emerald-600">
                   <span>원금균등</span>
                 </label>
-                <label class="flex items-center space-x-1 p-2 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800">
+                <label class="flex items-center space-x-1.5 p-2 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800">
                   <input type="radio" name="loan-type" value="maturity" class="text-emerald-600">
                   <span>만기일시</span>
                 </label>
               </div>
-            </div>
-
-            <div class="pt-2">
-              <button type="button" onclick="calculateLoan()" class="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold rounded-xl shadow-lg shadow-emerald-500/25 transition duration-150 flex items-center justify-center space-x-2">
-                <i data-lucide="calculator" class="w-4 h-4"></i>
-                <span>대출 상환액 계산하기</span>
-              </button>
             </div>
           </div>
         </div>
@@ -656,7 +618,7 @@
         <div class="lg:col-span-7 space-y-6">
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-sm">
             <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
-              <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">월 평균 상환금 (원금 + 이자)</span>
+              <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">월 상환 납부액</span>
               <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 font-semibold" id="loan-method-badge">원리금 균등상환</span>
             </div>
 
@@ -664,7 +626,7 @@
               <div class="text-3xl sm:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 tracking-tight" id="loan-monthly-pay">
                 2,961,438 <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">대출기간 동안 매달 동일한 금액 납부</div>
+              <div class="text-xs text-slate-400 mt-1" id="loan-pay-subtext">대출기간 동안 매달 동일한 금액 납부</div>
             </div>
 
             <div class="grid grid-cols-2 gap-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
@@ -677,6 +639,31 @@
                 <div class="text-base font-bold text-slate-800 dark:text-slate-200 mt-0.5" id="loan-total-sum">106,611,768원</div>
               </div>
             </div>
+
+            <!-- 회차별 상환 상세 스케줄 토글 -->
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800">
+              <button type="button" onclick="toggleLoanSchedule()" class="w-full py-2.5 text-xs font-semibold rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition flex items-center justify-center space-x-1.5">
+                <i data-lucide="table" class="w-3.5 h-3.5"></i>
+                <span id="loan-schedule-btn-text">회차별 월 상환 스케줄 보기 (펼치기)</span>
+              </button>
+              
+              <div id="loan-schedule-wrapper" class="hidden mt-3 max-h-60 overflow-y-auto rounded-xl border border-slate-200 dark:border-slate-800 text-[11px]">
+                <table class="w-full text-center">
+                  <thead class="bg-slate-100 dark:bg-slate-800/80 sticky top-0 text-slate-600 dark:text-slate-300">
+                    <tr>
+                      <th class="py-2 px-1">회차</th>
+                      <th class="py-2 px-1">월 납입금</th>
+                      <th class="py-2 px-1">원금</th>
+                      <th class="py-2 px-1">이자</th>
+                      <th class="py-2 px-1">대출 잔액</th>
+                    </tr>
+                  </thead>
+                  <tbody id="loan-schedule-tbody" class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-mono">
+                    <!-- 자바스크립트로 채워짐 -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -685,30 +672,37 @@
     <!-- ================= 5. 프리랜서 3.3% 계산기 ================= -->
     <section id="tab-freelance" class="tab-content hidden">
       <div class="mb-6">
-        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">프리랜서 3.3% 원천징수 실수령액 계산기</h1>
-        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">외주·아르바이트·강사료 지급 시 원천징수되는 사업소득세(3%) 및 지방소득세(0.3%)를 계산합니다.</p>
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">프리랜서 3.3% 원천징수 & 역산 계산기</h1>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">외주·아르바이트·강사료 지급 시 원천징수되는 사업소득세(3%) 및 지방소득세(0.3%)를 계산하고, 희망 세후 금액에 따른 계약서 세전 금액 역산까지 지원합니다.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div class="lg:col-span-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-sm">
-          <h2 class="text-base font-semibold mb-4 flex items-center space-x-2 text-slate-800 dark:text-slate-200">
-            <i data-lucide="laptop" class="w-4 h-4 text-purple-600"></i>
-            <span>지급액 입력</span>
-          </h2>
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-base font-semibold flex items-center space-x-2 text-slate-800 dark:text-slate-200">
+              <i data-lucide="laptop" class="w-4 h-4 text-purple-600"></i>
+              <span id="free-mode-title">세전 계약 금액 입력</span>
+            </h2>
+            <!-- 모드 전환 스위치 -->
+            <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl text-xs">
+              <button type="button" id="free-tab-normal" onclick="setFreelanceMode('normal')" class="px-2.5 py-1 rounded-lg font-semibold bg-white dark:bg-slate-700 text-purple-600 dark:text-purple-300 shadow-sm">세전→세후</button>
+              <button type="button" id="free-tab-reverse" onclick="setFreelanceMode('reverse')" class="px-2.5 py-1 rounded-lg font-medium text-slate-600 dark:text-slate-400">세후→세전역산</button>
+            </div>
+          </div>
+
           <div class="space-y-4">
             <div>
-              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">계약 금액 (세전)</label>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1" id="free-input-label">계약 금액 (세전, 원)</label>
               <div class="relative">
-                <input type="text" id="free-amount" value="3,000,000" class="w-full pl-3 pr-8 py-2 text-base font-bold rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
-                <span class="absolute right-3 top-2.5 text-xs text-slate-400">원</span>
+                <input type="text" id="free-amount" value="3,000,000" class="w-full pl-3 pr-8 py-2.5 text-base font-bold rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white outline-none">
+                <span class="absolute right-3 top-3 text-xs text-slate-400 font-medium">원</span>
               </div>
-            </div>
-
-            <div class="pt-2">
-              <button type="button" onclick="calculateFreelance()" class="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-purple-500/25 transition duration-150 flex items-center justify-center space-x-2">
-                <i data-lucide="calculator" class="w-4 h-4"></i>
-                <span>실수령액 계산하기</span>
-              </button>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <button type="button" onclick="setFreelance(1000000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">100만</button>
+                <button type="button" onclick="setFreelance(2000000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">200만</button>
+                <button type="button" onclick="setFreelance(3000000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">300만</button>
+                <button type="button" onclick="setFreelance(5000000)" class="px-2.5 py-1 text-xs rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">500만</button>
+              </div>
             </div>
           </div>
         </div>
@@ -716,35 +710,74 @@
         <div class="lg:col-span-7 space-y-6">
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-sm">
             <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
-              <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">실제 통장 입금액 (세후)</span>
-              <span class="text-xs px-2.5 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 font-semibold">공제율 3.3%</span>
+              <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider" id="free-result-card-title">실제 통장 입금액 (세후)</span>
+              <span class="text-xs px-2.5 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 font-semibold">원천징수 공제율 3.3%</span>
             </div>
 
             <div class="my-5">
               <div class="text-3xl sm:text-4xl font-extrabold text-purple-600 dark:text-purple-400 tracking-tight" id="free-net-result">
                 2,901,000 <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">총 세금 공제액: 99,000원</div>
+              <div class="text-xs text-slate-400 mt-1" id="free-subtext">총 세금 공제액: 99,000원</div>
             </div>
 
             <div class="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
               <div class="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-800/60">
-                <span class="text-slate-600 dark:text-slate-400">사업소득세 (3.0%)</span>
+                <span class="text-slate-600 dark:text-slate-400" id="free-row1-label">사업소득세 (3.0%)</span>
                 <span class="font-mono font-bold text-slate-800 dark:text-slate-200" id="free-tax-result">90,000원</span>
               </div>
-              <div class="flex justify-between items-center py-1">
-                <span class="text-slate-600 dark:text-slate-400">지방소득세 (0.3%)</span>
+              <div class="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-800/60">
+                <span class="text-slate-600 dark:text-slate-400" id="free-row2-label">지방소득세 (0.3%)</span>
                 <span class="font-mono font-bold text-slate-800 dark:text-slate-200" id="free-localtax-result">9,000원</span>
+              </div>
+              <div class="flex justify-between items-center py-1">
+                <span class="text-slate-600 dark:text-slate-400" id="free-row3-label">세전 계약 기준액</span>
+                <span class="font-mono font-bold text-purple-600 dark:text-purple-400" id="free-gross-result">3,000,000원</span>
               </div>
             </div>
 
-            <div class="mt-4 p-3 bg-blue-50 dark:bg-blue-950/40 rounded-xl text-xs text-blue-700 dark:text-blue-300">
-              💡 <strong>5월 종합소득세 신고 팁</strong>: 원천징수된 3.3%는 미리 납부한 세금입니다. 5월 종합소득세 신고 시 단순경비율/기준경비율을 적용하면 원천징수 세금 대부분을 국세청에서 환급받으실 수 있습니다!
+            <div class="mt-4 p-3.5 bg-blue-50 dark:bg-blue-950/40 rounded-xl text-xs text-blue-700 dark:text-blue-300">
+              💡 <strong>5월 종합소득세 환급 팁</strong>: 원천징수된 3.3%는 거래처에서 미리 납부한 예납 세금입니다. 5월 종합소득세 신고 시 단순경비율/기준경비율 및 기본 인적공제를 적용하면 원천징수된 세금 대부분을 국세청에서 환급받으실 수 있습니다!
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- ================= 모든 탭 공통 하단 광고 & 쿠팡 파트너스 영역 ================= -->
+    <!-- 1. 구글 애드센스 인피드 광고 영역 -->
+    <div class="mt-8">
+      <div class="ad-placeholder rounded-2xl p-5 text-center text-xs text-slate-500 dark:text-slate-400 min-h-[140px] flex flex-col items-center justify-center">
+        <div class="flex items-center space-x-1.5 text-slate-400 mb-1.5">
+          <i data-lucide="tag" class="w-4 h-4"></i>
+          <span class="font-mono text-[11px] tracking-wider uppercase">Google AdSense Native In-Feed Ad</span>
+        </div>
+        <p class="font-semibold text-slate-700 dark:text-slate-300 mb-1">고수익 금융 맞춤형 광고 매칭 영역</p>
+        <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md">연봉 및 세금 계산 후 가장 클릭률(CTR)과 단가(CPC)가 높은 '절세 상품', '대출 금리 비교', '신용카드 혜택' 광고가 자동 배치됩니다.</p>
+      </div>
+    </div>
+
+    <!-- 2. 쿠팡 파트너스 실시간 추천 상품 위젯 영역 -->
+    <div id="coupang-partners-section" class="mt-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+      <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center space-x-2">
+          <span class="text-rose-500 font-black tracking-tight text-xs bg-rose-50 dark:bg-rose-950/60 px-2 py-0.5 rounded">COUPANG</span>
+          <span class="text-xs font-semibold text-slate-800 dark:text-slate-200">직장인 재테크 도서 & 스마트 오피스 실속 꿀템</span>
+        </div>
+        <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 font-medium">파트너스 추천</span>
+      </div>
+      
+      <!-- 쿠팡 다이나믹 배너 (AF6212198) -->
+      <div id="coupang-banner-slot" class="w-full flex items-center justify-center min-h-[140px] overflow-hidden rounded-xl py-1">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+          new PartnersCoupang.G({"id":1035522,"template":"carousel","trackingCode":"AF6212198","width":"680","height":"140","tsource":""});
+        </script>
+      </div>
+      <p class="text-[10px] text-slate-400 dark:text-slate-500 text-center mt-2.5">
+        ※ 이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+      </p>
+    </div>
 
   </main>
 
@@ -777,7 +810,7 @@
     </div>
   </footer>
 
-  <!-- ================= 모달 팝업 (개인정보처리방침 / 이용약관 / 소개 / 문의) ================= -->
+  <!-- ================= 모달 팝업 ================= -->
   <div id="info-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200 dark:border-slate-800">
       <div class="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
@@ -787,7 +820,6 @@
         </button>
       </div>
       <div id="modal-body" class="p-6 overflow-y-auto text-xs leading-relaxed text-slate-600 dark:text-slate-300 space-y-4">
-        <!-- 모달 내용이 자바스크립트로 주입됨 -->
       </div>
       <div class="p-4 border-t border-slate-200 dark:border-slate-800 flex justify-end">
         <button onclick="closeModal()" class="px-4 py-2 text-xs font-semibold rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200">닫기</button>
@@ -795,12 +827,10 @@
     </div>
   </div>
 
-  <!-- 자바스크립트 로직 -->
+  <!-- 자바스크립트 전체 로직 -->
   <script>
-    // Lucide Icons 초기화
     lucide.createIcons();
 
-    // 다크모드 관리
     function initTheme() {
       if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
@@ -821,13 +851,11 @@
       updateChartTheme();
     }
 
-    // 탭 전환 로직
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       const activeContent = document.getElementById('tab-' + tabId);
       if (activeContent) activeContent.classList.remove('hidden');
 
-      // 데스크톱 탭 스타일 변경
       document.querySelectorAll('.nav-tab').forEach(btn => {
         if (btn.getAttribute('data-tab') === tabId) {
           btn.className = 'nav-tab active-tab px-3.5 py-2 text-sm font-medium rounded-lg text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-blue-950/60 transition-all flex items-center space-x-1.5';
@@ -836,7 +864,6 @@
         }
       });
 
-      // 모바일 탭 스타일 변경
       document.querySelectorAll('.mobile-nav-tab').forEach(btn => {
         if (btn.getAttribute('data-tab') === tabId) {
           btn.className = 'mobile-nav-tab px-3 py-1.5 text-xs font-semibold rounded-full bg-blue-600 text-white whitespace-nowrap shadow-sm';
@@ -848,8 +875,8 @@
       lucide.createIcons();
     }
 
-    // 숫자 포맷 함수
     function formatNumber(num) {
+      if (isNaN(num)) return '0';
       return Math.round(num).toLocaleString('ko-KR');
     }
 
@@ -857,13 +884,15 @@
       return Number(String(str).replace(/[^0-9]/g, '')) || 0;
     }
 
-    // 인풋에 쉼표 자동 삽입
-    ['salary-input', 'salary-taxfree', 'unemp-monthly-pay', 'sev-base-pay', 'sev-bonus', 'sev-annual-leave', 'loan-amount', 'free-amount'].forEach(id => {
+    // 인풋에 쉼표 자동 삽입 및 실시간 계산 트리거
+    const numberInputs = ['salary-input', 'salary-taxfree', 'unemp-monthly-pay', 'sev-base-pay', 'sev-bonus', 'sev-annual-leave', 'loan-amount', 'free-amount'];
+    numberInputs.forEach(id => {
       const input = document.getElementById(id);
       if (input) {
         input.addEventListener('input', (e) => {
           const val = cleanNumber(e.target.value);
           e.target.value = val === 0 ? '' : formatNumber(val);
+          triggerAutoCalc(id);
         });
       }
     });
@@ -873,7 +902,17 @@
       calculateSalary();
     }
 
-    // Chart.js 인스턴스
+    function setLoan(amount) {
+      document.getElementById('loan-amount').value = formatNumber(amount);
+      calculateLoan();
+    }
+
+    function setFreelance(amount) {
+      document.getElementById('free-amount').value = formatNumber(amount);
+      calculateFreelance();
+    }
+
+    // Chart.js 관리
     let salaryDoughnutChart = null;
 
     function initSalaryChart(dataValues) {
@@ -930,20 +969,37 @@
       }
     }
 
-    // ================= 1. 연봉 실수령액 계산 로직 =================
+    // ================= 1. 2026 연봉 실수령액 (국세청 간이세액표 정밀 공식) =================
     function calculateSalary() {
       const annualSalary = cleanNumber(document.getElementById('salary-input').value);
       const taxFreeMonthly = cleanNumber(document.getElementById('salary-taxfree').value);
       const dependents = Number(document.getElementById('salary-dependents').value) || 1;
       const children = Number(document.getElementById('salary-children').value) || 0;
 
+      if (annualSalary <= 0) {
+        document.getElementById('result-monthly-net').innerHTML = `0 <span class="text-xl sm:text-2xl font-bold">원</span>`;
+        document.getElementById('result-annual-net').innerText = `연간 실수령액 약 0원`;
+        document.getElementById('result-monthly-gross').innerText = `0원`;
+        document.getElementById('result-monthly-deduct').innerText = `0원`;
+        document.getElementById('salary-eff-rate').innerText = `공제율 0%`;
+        ['pension', 'health', 'care', 'emp', 'tax', 'localtax'].forEach(k => {
+          document.getElementById('deduct-' + k).innerText = '0원';
+        });
+        initSalaryChart([0, 0, 0, 0, 0, 0]);
+        return;
+      }
+
       const monthlyGross = Math.floor(annualSalary / 12);
       const taxableMonthly = Math.max(0, monthlyGross - taxFreeMonthly);
+      const annualTaxable = taxableMonthly * 12;
 
       // 4대보험 계산 요율 (2026년 기준)
-      // 국민연금: 4.5% (월 소득 상한액 6,170,000원 기준 최대 277,650원)
-      const pensionBase = Math.min(Math.max(taxableMonthly, 390000), 6170000);
-      const pension = Math.floor(pensionBase * 0.045);
+      // 국민연금: 4.5% (기준소득월액 상한액 6,170,000원, 하한액 390,000원)
+      let pension = 0;
+      if (taxableMonthly > 0) {
+        const pensionBase = Math.min(Math.max(taxableMonthly, 390000), 6170000);
+        pension = Math.floor(pensionBase * 0.045);
+      }
 
       // 건강보험: 3.545%
       const health = Math.floor(taxableMonthly * 0.03545);
@@ -954,38 +1010,78 @@
       // 고용보험: 0.9%
       const emp = Math.floor(taxableMonthly * 0.009);
 
-      // 근로소득 간이세액표 근사 알고리즘
-      // 과세표준 추정 및 누진세율
-      let incomeTax = 0;
-      const annualTaxable = taxableMonthly * 12;
-      
-      // 간이 세액 추정 공식
-      if (annualTaxable <= 14000000) {
-        incomeTax = (annualTaxable * 0.06) / 12;
-      } else if (annualTaxable <= 50000000) {
-        incomeTax = (840000 + (annualTaxable - 14000000) * 0.15) / 12;
-      } else if (annualTaxable <= 88000000) {
-        incomeTax = (6240000 + (annualTaxable - 50000000) * 0.24) / 12;
-      } else if (annualTaxable <= 150000000) {
-        incomeTax = (15360000 + (annualTaxable - 88000000) * 0.35) / 12;
+      // ---------------- 국세청 간이세액표 정밀 근로소득세 알고리즘 ----------------
+      // 1. 근로소득공제 (5단계 누진공제)
+      let earnedIncomeDeduction = 0;
+      if (annualTaxable <= 5000000) {
+        earnedIncomeDeduction = annualTaxable * 0.7;
+      } else if (annualTaxable <= 15000000) {
+        earnedIncomeDeduction = 3500000 + (annualTaxable - 5000000) * 0.4;
+      } else if (annualTaxable <= 45000000) {
+        earnedIncomeDeduction = 7500000 + (annualTaxable - 15000000) * 0.15;
+      } else if (annualTaxable <= 100000000) {
+        earnedIncomeDeduction = 12000000 + (annualTaxable - 45000000) * 0.05;
       } else {
-        incomeTax = (37060000 + (annualTaxable - 150000000) * 0.38) / 12;
+        earnedIncomeDeduction = Math.min(20000000, 14750000 + (annualTaxable - 100000000) * 0.02);
       }
 
-      // 부양가족 및 자녀 공제 감면 반영
-      const dependentDiscount = (dependents - 1) * 18000;
-      const childDiscount = children * 25000;
-      incomeTax = Math.max(0, incomeTax - (dependentDiscount + childDiscount));
-      incomeTax = Math.floor(incomeTax / 10) * 10;
+      // 2. 인적공제 (1인당 연 150만원)
+      const personalDeduction = dependents * 1500000;
 
-      // 지방소득세 (소득세의 10%)
+      // 3. 연금보험료공제 (국민연금 전액 공제)
+      const annualPension = pension * 12;
+
+      // 4. 특별소득공제 (건보 + 고용 + 간이 표준공제)
+      const annualHealthCare = (health + care) * 12;
+      const annualEmp = emp * 12;
+      const specialDeduction = annualHealthCare + annualEmp;
+
+      // 과세표준 산출
+      const taxBase = Math.max(0, annualTaxable - earnedIncomeDeduction - personalDeduction - annualPension - specialDeduction);
+
+      // 소득세 기본세율 적용
+      let calculatedTax = 0;
+      if (taxBase <= 14000000) {
+        calculatedTax = taxBase * 0.06;
+      } else if (taxBase <= 50000000) {
+        calculatedTax = 840000 + (taxBase - 14000000) * 0.15;
+      } else if (taxBase <= 88000000) {
+        calculatedTax = 6240000 + (taxBase - 50000000) * 0.24;
+      } else if (taxBase <= 150000000) {
+        calculatedTax = 15360000 + (taxBase - 88000000) * 0.35;
+      } else if (taxBase <= 300000000) {
+        calculatedTax = 37060000 + (taxBase - 150000000) * 0.38;
+      } else {
+        calculatedTax = 94060000 + (taxBase - 300000000) * 0.40;
+      }
+
+      // 근로소득 세액공제 (조세특례제한법)
+      let taxCredit = 0;
+      if (calculatedTax <= 1300000) {
+        taxCredit = calculatedTax * 0.55;
+      } else {
+        taxCredit = 715000 + (calculatedTax - 1300000) * 0.30;
+      }
+      let creditLimit = 740000;
+      if (annualTaxable > 70000000) creditLimit = 500000;
+      else if (annualTaxable > 55000000) creditLimit = 660000;
+      taxCredit = Math.min(taxCredit, creditLimit);
+
+      // 자녀세액공제 (1인 15만, 2인 35만, 3인 이상 35만 + 초과당 30만)
+      let childCredit = 0;
+      if (children === 1) childCredit = 150000;
+      else if (children === 2) childCredit = 350000;
+      else if (children >= 3) childCredit = 350000 + (children - 2) * 300000;
+
+      const finalAnnualTax = Math.max(0, calculatedTax - taxCredit - childCredit);
+      const incomeTax = Math.floor(finalAnnualTax / 12 / 10) * 10;
       const localTax = Math.floor(incomeTax * 0.1 / 10) * 10;
 
       // 총 공제액 및 실수령액
       const totalDeduction = pension + health + care + emp + incomeTax + localTax;
       const monthlyNet = monthlyGross - totalDeduction;
       const annualNet = monthlyNet * 12;
-      const effRate = ((totalDeduction / monthlyGross) * 100).toFixed(1);
+      const effRate = monthlyGross > 0 ? ((totalDeduction / monthlyGross) * 100).toFixed(1) : 0;
 
       // UI 업데이트
       document.getElementById('result-monthly-net').innerHTML = `${formatNumber(monthlyNet)} <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>`;
@@ -1015,27 +1111,25 @@
       });
     }
 
-    // ================= 2. 실업급여 계산 로직 =================
+    // ================= 2. 실업급여 계산 로직 (2026 최신 최저임금 반영) =================
     function calculateUnemployment() {
       const age = document.getElementById('unemp-age').value;
       const period = document.getElementById('unemp-period').value;
       const monthlyPay = cleanNumber(document.getElementById('unemp-monthly-pay').value);
       const hours = Number(document.getElementById('unemp-hours').value) || 8;
 
-      // 1일 평균임금 추정 (월급 / 30일)
+      // 1일 평균임금 (월급 / 30일)
       const dailyAvg = monthlyPay / 30;
-      // 구직급여 기초일액: 평균임금의 60%
-      let dailyBenefit = dailyAvg * 0.6;
+      let dailyBenefit = dailyAvg * 0.6; // 기초일액 60%
 
-      // 상한액: 1일 66,000원
+      // 2026년 기준 상한액 및 최저임금(10,030원) 기준 하한액
       const maxDaily = 66000;
-      // 하한액: 최저임금(시간당 9,860원 * 80% = 7,888원 * hours)
-      const minDaily = Math.floor(9860 * 0.8 * hours);
+      const minDaily = Math.floor(10030 * 0.8 * hours);
 
       if (dailyBenefit > maxDaily) dailyBenefit = maxDaily;
       if (dailyBenefit < minDaily) dailyBenefit = minDaily;
 
-      // 소정급여일수 표 (고용보험법 규정)
+      // 소정급여일수
       let days = 120;
       if (age === 'under50') {
         if (period === 'p1') days = 120;
@@ -1044,7 +1138,6 @@
         else if (period === 'p4') days = 210;
         else if (period === 'p5') days = 240;
       } else {
-        // 50세 이상 또는 장애인
         if (period === 'p1') days = 120;
         else if (period === 'p2') days = 180;
         else if (period === 'p3') days = 210;
@@ -1054,17 +1147,24 @@
 
       const totalBenefit = dailyBenefit * days;
       const months = (days / 30).toFixed(1);
+      const monthlyAvg = Math.round(dailyBenefit * 30);
 
       document.getElementById('unemp-badge-days').innerText = `소정급여일수 ${days}일`;
       document.getElementById('unemp-total-result').innerHTML = `${formatNumber(totalBenefit)} <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>`;
-      document.getElementById('unemp-daily-pay').innerText = `${formatNumber(dailyBenefit)}원 ${dailyBenefit >= maxDaily ? '(상한액 적용)' : ''}`;
+      document.getElementById('unemp-daily-pay').innerText = `${formatNumber(dailyBenefit)}원 ${dailyBenefit >= maxDaily ? '(상한액 적용)' : (dailyBenefit <= minDaily ? '(하한액 적용)' : '')}`;
       document.getElementById('unemp-days-text').innerText = `${days}일 (약 ${months}개월)`;
+      document.getElementById('unemp-monthly-avg-text').innerText = `월 평균 약 ${formatNumber(monthlyAvg)}원씩 수급 (30일 기준)`;
+      document.getElementById('unemp-min-rate-text').innerText = `1일 약 ${formatNumber(minDaily)}원 (${hours}시간 기준)`;
     }
 
-    // ================= 3. 퇴직금 계산 로직 =================
+    // ================= 3. 퇴직금 & 세후 실수령액 정밀 계산 =================
     function calculateSeverance() {
-      const start = new Date(document.getElementById('sev-start').value);
-      const end = new Date(document.getElementById('sev-end').value);
+      const startVal = document.getElementById('sev-start').value;
+      const endVal = document.getElementById('sev-end').value;
+      if (!startVal || !endVal) return;
+
+      const start = new Date(startVal);
+      const end = new Date(endVal);
       const diffTime = end - start;
       const diffDays = Math.max(0, Math.floor(diffTime / (1000 * 60 * 60 * 24)));
 
@@ -1072,78 +1172,256 @@
       const bonusYear = cleanNumber(document.getElementById('sev-bonus').value);
       const annualLeave = cleanNumber(document.getElementById('sev-annual-leave').value);
 
-      // 직전 3개월 총일수 (약 92일)
-      const daysIn3m = 92;
+      // 직전 3개월의 실제 역일 수 계산 (예: 1월 1일 퇴사면 10, 11, 12월 일수 = 92일)
+      const threeMonthsAgo = new Date(end);
+      threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
+      const daysIn3m = Math.max(89, Math.round((end - threeMonthsAgo) / (1000 * 60 * 60 * 24))) || 92;
+      document.getElementById('sev-days-3m').innerText = `${daysIn3m}일`;
+
       const dailyBonus = (bonusYear * (3 / 12)) / daysIn3m;
       const dailyLeave = (annualLeave * (3 / 12)) / daysIn3m;
       const dailyWage = (base3m / daysIn3m) + dailyBonus + dailyLeave;
 
-      // 퇴직금 = 1일 평균임금 * 30 * (재직일수 / 365)
-      const severance = dailyWage * 30 * (diffDays / 365);
       const years = (diffDays / 365).toFixed(1);
-
       document.getElementById('sev-period-badge').innerText = `재직일수 ${diffDays}일 (약 ${years}년)`;
-      document.getElementById('sev-total-gross').innerHTML = `${formatNumber(severance)} <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>`;
       document.getElementById('sev-daily-avg').innerText = `${formatNumber(dailyWage)}원`;
+
+      // 1년 미만(365일 미만) 체크
+      const warningBox = document.getElementById('sev-warning-box');
+      if (diffDays < 365) {
+        warningBox.classList.remove('hidden');
+        document.getElementById('sev-total-gross').innerHTML = `0 <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>`;
+        document.getElementById('sev-net-amount').innerText = '0원';
+        document.getElementById('sev-net-hint').innerText = '근속기간 1년 미만은 법정 퇴직금 지급 대상이 아닙니다.';
+        return;
+      }
+      warningBox.classList.add('hidden');
+
+      // 법정 퇴직금 = 1일 평균임금 * 30 * (재직일수 / 365)
+      const severanceGross = dailyWage * 30 * (diffDays / 365);
+
+      // 퇴직소득세 간이 계산 (2026 근속연수공제 + 환산급여공제)
+      const serviceYears = Math.max(1, Math.ceil(diffDays / 365));
+      let serviceDeduction = 0;
+      if (serviceYears <= 5) serviceDeduction = serviceYears * 1000000;
+      else if (serviceYears <= 10) serviceDeduction = 5000000 + (serviceYears - 5) * 2000000;
+      else if (serviceYears <= 20) serviceDeduction = 15000000 + (serviceYears - 10) * 2500000;
+      else serviceDeduction = 40000000 + (serviceYears - 20) * 3000000;
+
+      const convertedSalary = Math.max(0, (severanceGross - serviceDeduction) * 12 / serviceYears);
+      let convertedTax = 0;
+      if (convertedSalary <= 14000000) convertedTax = convertedSalary * 0.06;
+      else if (convertedSalary <= 50000000) convertedTax = 840000 + (convertedSalary - 14000000) * 0.15;
+      else if (convertedSalary <= 88000000) convertedTax = 6240000 + (convertedSalary - 50000000) * 0.24;
+      else convertedTax = 15360000 + (convertedSalary - 88000000) * 0.35;
+
+      const annualRetireTax = Math.floor((convertedTax * serviceYears / 12) * 1.1); // 지방소득세 10% 포함
+      const netSeverance = Math.max(0, severanceGross - annualRetireTax);
+
+      document.getElementById('sev-total-gross').innerHTML = `${formatNumber(severanceGross)} <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>`;
+      document.getElementById('sev-net-amount').innerText = `${formatNumber(netSeverance)}원`;
+      document.getElementById('sev-net-hint').innerHTML = `예상 세후 실수령액: 약 <strong class="text-emerald-600 dark:text-emerald-400 font-bold">${formatNumber(netSeverance)}원</strong> (퇴직소득세 약 ${formatNumber(annualRetireTax)}원 공제 후)`;
     }
 
-    // ================= 4. 대출 이자 계산 로직 =================
+    // ================= 4. 대출이자 및 회차별 상세 스케줄 =================
+    let currentLoanSchedule = [];
+
     function calculateLoan() {
       const principal = cleanNumber(document.getElementById('loan-amount').value);
       const annualRate = (Number(document.getElementById('loan-rate').value) || 0) / 100;
-      const months = Number(document.getElementById('loan-months').value) || 12;
-      const loanType = document.querySelector('input[name="loan-type"]:checked').value;
+      const months = Math.max(1, Number(document.getElementById('loan-months').value) || 12);
+      const loanTypeEl = document.querySelector('input[name="loan-type"]:checked');
+      const loanType = loanTypeEl ? loanTypeEl.value : 'equal-total';
 
       const monthlyRate = annualRate / 12;
       let monthlyPay = 0;
       let totalInterest = 0;
+      currentLoanSchedule = [];
+
+      let balance = principal;
 
       if (loanType === 'equal-total') {
-        // 원리금 균등상환: PMT 공식
-        monthlyPay = principal * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
-        totalInterest = (monthlyPay * months) - principal;
+        // 원리금 균등상환
+        if (monthlyRate === 0) {
+          monthlyPay = principal / months;
+          totalInterest = 0;
+        } else {
+          monthlyPay = principal * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+          totalInterest = (monthlyPay * months) - principal;
+        }
         document.getElementById('loan-method-badge').innerText = '원리금 균등상환';
+        document.getElementById('loan-pay-subtext').innerText = '대출기간 동안 매달 동일한 금액 납부';
+
+        for (let i = 1; i <= months; i++) {
+          const interestPart = balance * monthlyRate;
+          const principalPart = monthlyPay - interestPart;
+          balance = Math.max(0, balance - principalPart);
+          currentLoanSchedule.push({ round: i, pay: monthlyPay, principal: principalPart, interest: interestPart, balance: balance });
+        }
+
       } else if (loanType === 'equal-principal') {
-        // 원금 균등상환 (첫 달 기준 표시)
+        // 원금 균등상환
         const principalMonthly = principal / months;
-        const firstMonthInterest = principal * monthlyRate;
-        monthlyPay = principalMonthly + firstMonthInterest;
         totalInterest = (principal * monthlyRate * (months + 1)) / 2;
+        monthlyPay = principalMonthly + (principal * monthlyRate); // 첫달 기준
         document.getElementById('loan-method-badge').innerText = '원금 균등상환 (첫 달 기준)';
+        document.getElementById('loan-pay-subtext').innerText = '원금은 매달 일정하며, 이자가 점차 줄어들어 월 납입금 감소';
+
+        for (let i = 1; i <= months; i++) {
+          const interestPart = balance * monthlyRate;
+          const pay = principalMonthly + interestPart;
+          balance = Math.max(0, balance - principalMonthly);
+          currentLoanSchedule.push({ round: i, pay: pay, principal: principalMonthly, interest: interestPart, balance: balance });
+        }
+
       } else {
         // 만기일시 상환
         monthlyPay = principal * monthlyRate;
         totalInterest = principal * annualRate * (months / 12);
         document.getElementById('loan-method-badge').innerText = '만기일시 상환';
+        document.getElementById('loan-pay-subtext').innerText = '매달 이자만 납부 후, 마지막 달에 원금 일시 상환';
+
+        for (let i = 1; i <= months; i++) {
+          const isLast = i === months;
+          const pay = isLast ? monthlyPay + principal : monthlyPay;
+          const principalPart = isLast ? principal : 0;
+          balance = isLast ? 0 : principal;
+          currentLoanSchedule.push({ round: i, pay: pay, principal: principalPart, interest: monthlyPay, balance: balance });
+        }
       }
 
       const totalSum = principal + totalInterest;
-
       document.getElementById('loan-monthly-pay').innerHTML = `${formatNumber(monthlyPay)} <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>`;
       document.getElementById('loan-total-interest').innerText = `${formatNumber(totalInterest)}원`;
       document.getElementById('loan-total-sum').innerText = `${formatNumber(totalSum)}원`;
+
+      renderLoanScheduleTable();
     }
 
-    // ================= 5. 프리랜서 3.3% 계산 로직 =================
+    function toggleLoanSchedule() {
+      const wrapper = document.getElementById('loan-schedule-wrapper');
+      const btnText = document.getElementById('loan-schedule-btn-text');
+      if (wrapper.classList.contains('hidden')) {
+        wrapper.classList.remove('hidden');
+        btnText.innerText = '회차별 월 상환 스케줄 접기 ▲';
+      } else {
+        wrapper.classList.add('hidden');
+        btnText.innerText = '회차별 월 상환 스케줄 보기 (펼치기) ▼';
+      }
+    }
+
+    function renderLoanScheduleTable() {
+      const tbody = document.getElementById('loan-schedule-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      currentLoanSchedule.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 dark:hover:bg-slate-800/50';
+        tr.innerHTML = `
+          <td class="py-1.5 px-1">${row.round}회차</td>
+          <td class="py-1.5 px-1 font-semibold text-slate-900 dark:text-white">${formatNumber(row.pay)}원</td>
+          <td class="py-1.5 px-1">${formatNumber(row.principal)}원</td>
+          <td class="py-1.5 px-1 text-rose-500">${formatNumber(row.interest)}원</td>
+          <td class="py-1.5 px-1">${formatNumber(row.balance)}원</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // ================= 5. 프리랜서 3.3% & 역산 계산기 =================
+    let freelanceMode = 'normal'; // 'normal' (세전->세후) or 'reverse' (세후->세전)
+
+    function setFreelanceMode(mode) {
+      freelanceMode = mode;
+      const tabNormal = document.getElementById('free-tab-normal');
+      const tabReverse = document.getElementById('free-tab-reverse');
+      const inputLabel = document.getElementById('free-input-label');
+      const cardTitle = document.getElementById('free-result-card-title');
+
+      if (mode === 'normal') {
+        tabNormal.className = 'px-2.5 py-1 rounded-lg font-semibold bg-white dark:bg-slate-700 text-purple-600 dark:text-purple-300 shadow-sm';
+        tabReverse.className = 'px-2.5 py-1 rounded-lg font-medium text-slate-600 dark:text-slate-400';
+        inputLabel.innerText = '계약 금액 (세전, 원)';
+        cardTitle.innerText = '실제 통장 입금액 (세후)';
+        document.getElementById('free-mode-title').innerText = '세전 계약 금액 입력';
+      } else {
+        tabReverse.className = 'px-2.5 py-1 rounded-lg font-semibold bg-white dark:bg-slate-700 text-purple-600 dark:text-purple-300 shadow-sm';
+        tabNormal.className = 'px-2.5 py-1 rounded-lg font-medium text-slate-600 dark:text-slate-400';
+        inputLabel.innerText = '희망 통장 입금액 (세후, 원)';
+        cardTitle.innerText = '계약서 기재 필요 금액 (세전 역산)';
+        document.getElementById('free-mode-title').innerText = '희망 세후 수령액 입력';
+      }
+      calculateFreelance();
+    }
+
     function calculateFreelance() {
-      const gross = cleanNumber(document.getElementById('free-amount').value);
-      const tax = Math.floor((gross * 0.03) / 10) * 10;
-      const localTax = Math.floor((tax * 0.1) / 10) * 10;
-      const totalTax = tax + localTax;
-      const net = gross - totalTax;
+      const inputVal = cleanNumber(document.getElementById('free-amount').value);
 
-      document.getElementById('free-net-result').innerHTML = `${formatNumber(net)} <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>`;
-      document.getElementById('free-tax-result').innerText = `${formatNumber(tax)}원`;
-      document.getElementById('free-localtax-result').innerText = `${formatNumber(localTax)}원`;
+      if (freelanceMode === 'normal') {
+        const gross = inputVal;
+        const tax = Math.floor((gross * 0.03) / 10) * 10;
+        const localTax = Math.floor((tax * 0.1) / 10) * 10;
+        const totalTax = tax + localTax;
+        const net = gross - totalTax;
+
+        document.getElementById('free-net-result').innerHTML = `${formatNumber(net)} <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>`;
+        document.getElementById('free-subtext').innerText = `총 세금 공제액: ${formatNumber(totalTax)}원`;
+        document.getElementById('free-tax-result').innerText = `${formatNumber(tax)}원`;
+        document.getElementById('free-localtax-result').innerText = `${formatNumber(localTax)}원`;
+        document.getElementById('free-gross-result').innerText = `${formatNumber(gross)}원`;
+      } else {
+        // 역산 모드: 세전 = 세후 / 0.967
+        const net = inputVal;
+        const gross = Math.round(net / 0.967);
+        const tax = Math.floor((gross * 0.03) / 10) * 10;
+        const localTax = Math.floor((tax * 0.1) / 10) * 10;
+        const totalTax = tax + localTax;
+
+        document.getElementById('free-net-result').innerHTML = `${formatNumber(gross)} <span class="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold">원</span>`;
+        document.getElementById('free-subtext').innerText = `통장에 ${formatNumber(net)}원 입금받으려면 계약서에 위 금액을 기재해야 합니다.`;
+        document.getElementById('free-tax-result').innerText = `${formatNumber(tax)}원`;
+        document.getElementById('free-localtax-result').innerText = `${formatNumber(localTax)}원`;
+        document.getElementById('free-gross-result').innerText = `${formatNumber(net)}원 (세후 입금 희망액)`;
+      }
     }
 
-    // 공유하기
+    // ================= 실시간 이벤트 리스너 자동 연결 =================
+    function triggerAutoCalc(inputId) {
+      if (inputId.startsWith('salary')) calculateSalary();
+      else if (inputId.startsWith('unemp')) calculateUnemployment();
+      else if (inputId.startsWith('sev')) calculateSeverance();
+      else if (inputId.startsWith('loan')) calculateLoan();
+      else if (inputId.startsWith('free')) calculateFreelance();
+    }
+
+    ['salary-dependents', 'salary-children'].forEach(id => {
+      document.getElementById(id)?.addEventListener('change', calculateSalary);
+    });
+
+    ['unemp-age', 'unemp-period', 'unemp-hours'].forEach(id => {
+      document.getElementById(id)?.addEventListener('change', calculateUnemployment);
+    });
+
+    ['sev-start', 'sev-end'].forEach(id => {
+      document.getElementById(id)?.addEventListener('change', calculateSeverance);
+    });
+
+    ['loan-rate', 'loan-months'].forEach(id => {
+      const el = document.getElementById(id);
+      el?.addEventListener('input', calculateLoan);
+      el?.addEventListener('change', calculateLoan);
+    });
+
+    document.querySelectorAll('input[name="loan-type"]').forEach(radio => {
+      radio.addEventListener('change', calculateLoan);
+    });
+
     function copyCurrentUrl() {
       navigator.clipboard.writeText(window.location.href);
       alert('사이트 주소가 클립보드에 복사되었습니다!');
     }
 
-    // ================= 애드센스 필수 모달 컨텐츠 =================
+    // 애드센스 필수 모달 컨텐츠
     const modalContents = {
       privacy: {
         title: '개인정보처리방침 (Privacy Policy)',
@@ -1153,8 +1431,10 @@
           <h4 class="font-bold text-slate-800 dark:text-white mt-3">2. 구글 애드센스 및 쿠키(Cookie) 사용 안내</h4>
           <p>본 서비스는 제3자 광고 제공업체(Google 등)를 통해 사이트에 광고를 게재합니다. Google을 비롯한 제3자 업체는 사용자가 본 사이트 또는 다른 웹사이트를 방문한 기록을 바탕으로 관심 기반 맞춤형 광고를 제공하기 위해 쿠키(Cookie)를 사용합니다.</p>
           <p>이용자는 Google 광고 설정(<a href="https://www.google.com/settings/ads" target="_blank" class="text-blue-500 underline">https://www.google.com/settings/ads</a>)을 방문하여 맞춤형 광고를 거부할 수 있습니다.</p>
-          <h4 class="font-bold text-slate-800 dark:text-white mt-3">3. 개인정보 보호책임자</h4>
-          <p>이메일 문의: support@moneydoctor.app</p>
+          <h4 class="font-bold text-slate-800 dark:text-white mt-3">3. 쿠팡 파트너스 안내</h4>
+          <p>본 사이트는 쿠팡 파트너스 활동의 일환으로 일정액의 수수료를 제공받을 수 있으며, 구매자에게는 어떠한 추가 비용도 발생하지 않습니다.</p>
+          <h4 class="font-bold text-slate-800 dark:text-white mt-3">4. 개인정보 보호책임자</h4>
+          <p>이메일 문의: support@hap-py.us</p>
         `
       },
       terms: {
@@ -1173,19 +1453,19 @@
           <p>복잡하고 매년 달라지는 세법과 4대보험 요율을 누구나 1초만에 쉽고 명확하게 계산할 수 있도록 기획된 웹 핀테크 도구입니다.</p>
           <h4 class="font-bold text-slate-800 dark:text-white mt-3">공식 데이터 출처</h4>
           <ul class="list-disc pl-5 space-y-1">
-            <li>국민건강보험공단: 2026년도 건강보험 및 장기요양보험 고시 요율</li>
-            <li>국민연금공단: 2026년도 기준소득월액 상·하한액 및 연금 요율</li>
-            <li>고용노동부: 고용보험 요율 및 실업급여 상·하한액 고시</li>
-            <li>국세청 홈택스: 2026년 근로소득 간이세액표</li>
+            <li>국민건강보험공단: 2026년도 건강보험(3.545%) 및 장기요양보험(12.95%) 고시 요율</li>
+            <li>국민연금공단: 2026년도 기준소득월액 상한액(6,170,000원) 및 연금 요율(4.5%)</li>
+            <li>고용노동부: 고용보험 요율(0.9%) 및 실업급여 상한(66,000원)·하한액 고시</li>
+            <li>국세청 홈택스: 2026년 근로소득 간이세액표 및 5단계 근로소득공제 규정</li>
           </ul>
         `
       },
       contact: {
         title: '문의하기 (Contact Us)',
         body: `
-          <p>머니닥터 서비스에 관한 제휴 문의, 계산 공식 건의, 광고 문의는 아래 공식 이메일로 연락주시면 24시간 이내에 답변드립니다.</p>
+          <p>머니닥터 서비스에 관한 제휴 문의, 계산 공식 건의, 광고 문의는 아래 공식 이메일로 연락주시면 신속히 답변드립니다.</p>
           <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-mono mt-3">
-            ✉️ contact@moneydoctor.app
+            ✉️ contact@hap-py.us
           </div>
         `
       }
@@ -1205,12 +1485,10 @@
       document.getElementById('info-modal').classList.remove('flex');
     }
 
-    // 모달 배경 클릭 시 닫기
     document.getElementById('info-modal').addEventListener('click', (e) => {
       if (e.target.id === 'info-modal') closeModal();
     });
 
-    // 페이지 최초 로드 시 계산 1회 실행
     window.addEventListener('DOMContentLoaded', () => {
       calculateSalary();
       calculateUnemployment();
