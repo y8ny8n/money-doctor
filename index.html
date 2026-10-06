@@ -8,6 +8,16 @@
   <!-- Google Search Console 소유권 확인 -->
   <meta name="google-site-verification" content="qj5kBt9ksP5bnTZGCMm6R74nbQ4TTfzL4-rjngLmP94" />
 
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WE4M5MSH3V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WE4M5MSH3V');
+  </script>
+
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3800059466156754" crossorigin="anonymous"></script>
 
@@ -884,6 +894,13 @@
       });
 
       lucide.createIcons();
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'select_content', {
+          content_type: 'calculator_tab',
+          item_id: tabId
+        });
+      }
     }
 
     function formatNumber(num) {
@@ -1482,6 +1499,11 @@
 
     function copyCurrentUrl() {
       navigator.clipboard.writeText(window.location.href);
+      if (typeof gtag === 'function') {
+        gtag('event', 'share', {
+          method: 'clipboard_copy'
+        });
+      }
       alert('사이트 주소가 클립보드에 복사되었습니다!');
     }
 
