@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대출 이자 계산기 & 상환 방식별 월 납입금 스케줄러 - 머니닥터</title>
+  <meta name="description" content="원리금균등, 원금균등, 만기일시 상환 방식별 대출이자 계산기입니다. 대출금액, 금리, 기간에 따른 월 상환액과 총 이자비용 비교, 회차별 상환 스케줄 및 2026 스트레스 DSR 대출 가이드를 확인하세요.">
+  <meta name="keywords" content="대출이자 계산기, 원리금균등상환, 원금균등상환, 만기일시상환, 대출 상환 스케줄, 주택담보대출 이자, 신용대출 계산기, 스트레스 DSR">
+  <link rel="canonical" href="https://hap-py.us/loan.html">
+
+  <meta name="google-site-verification" content="qj5kBt9ksP5bnTZGCMm6R74nbQ4TTfzL4-rjngLmP94" />
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WE4M5MSH3V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WE4M5MSH3V');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3800059466156754" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen font-sans flex flex-col transition-colors duration-200">
+
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-2.5">
+        <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-sm">
+          <i data-lucide="calculator" class="w-5 h-5"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-black text-lg tracking-tight text-slate-900 dark:text-white leading-none">머니닥터</span>
+          <span class="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mt-0.5">MoneyDoctor</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center space-x-1 text-xs font-semibold">
+        <a href="/salary.html" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">연봉 실수령액</a>
+        <a href="/unemployment.html" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">실업급여</a>
+        <a href="/severance.html" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">퇴직금</a>
+        <a href="/loan.html" class="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">대출이자</a>
+        <a href="/freelance.html" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">3.3% 프리랜서</a>
+      </nav>
+      <a href="/" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">
+        전체 계산기 홈
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 py-8 w-full">
+    <div class="mb-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 text-xs font-bold mb-2">
+        <i data-lucide="landmark" class="w-3.5 h-3.5"></i>
+        <span>원리금균등 · 원금균등 · 만기일시 3대 상환방식 완벽 지원</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+        대출 이자 및 상환 스케줄 계산기
+      </h1>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+        대출 원금, 연이자율, 대출 기간과 상환 방식을 선택하시면 매월 상환액과 총 이자 비용, 회차별 원금/이자 차감 내역을 확인합니다.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- 좌측 입력 -->
+      <div class="lg:col-span-5 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+        <h2 class="text-base font-bold text-slate-900 dark:text-white mb-4 flex items-center space-x-2">
+          <i data-lucide="wallet" class="w-4 h-4 text-blue-600"></i>
+          <span>대출 조건 입력</span>
+        </h2>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">대출 원금 (원)</label>
+            <div class="relative">
+              <input type="text" id="loan-amount" value="100,000,000" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800 font-mono font-bold text-base focus:ring-2 focus:ring-blue-500 focus:outline-none pr-8">
+              <span class="absolute right-3.5 top-3 text-xs text-slate-400">원</span>
+            </div>
+            <div class="grid grid-cols-4 gap-1.5 mt-2">
+              <button onclick="setLoan(30000000)" class="px-2 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-medium">3,000만</button>
+              <button onclick="setLoan(50000000)" class="px-2 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-medium">5,000만</button>
+              <button onclick="setLoan(100000000)" class="px-2 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-medium">1억</button>
+              <button onclick="setLoan(300000000)" class="px-2 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-medium">3억</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">연 이자율 (%)</label>
+              <div class="relative">
+                <input type="number" id="loan-rate" value="4.5" step="0.1" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800 font-mono font-bold text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none pr-6">
+                <span class="absolute right-3 top-2.5 text-xs text-slate-400">%</span>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">대출 기간 (개월)</label>
+              <div class="relative">
+                <input type="number" id="loan-months" value="24" step="1" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800 font-mono font-bold text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none pr-8">
+                <span class="absolute right-3 top-2.5 text-xs text-slate-400">개월</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">상환 방식 선택</label>
+            <div class="grid grid-cols-3 gap-2 text-xs">
+              <label class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50 dark:has-[:checked]:bg-blue-950/40 text-center">
+                <input type="radio" name="loan-type" value="equal-total" checked class="hidden">
+                <strong class="text-slate-900 dark:text-white">원리금균등</strong>
+                <span class="text-[10px] text-slate-500 mt-0.5">매월 일정 납부</span>
+              </label>
+              <label class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50 dark:has-[:checked]:bg-blue-950/40 text-center">
+                <input type="radio" name="loan-type" value="equal-principal" class="hidden">
+                <strong class="text-slate-900 dark:text-white">원금균등</strong>
+                <span class="text-[10px] text-slate-500 mt-0.5">이자 점차 감소</span>
+              </label>
+              <label class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50 dark:has-[:checked]:bg-blue-950/40 text-center">
+                <input type="radio" name="loan-type" value="bullet" class="hidden">
+                <strong class="text-slate-900 dark:text-white">만기일시</strong>
+                <span class="text-[10px] text-slate-500 mt-0.5">이자만 납부</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="calculateLoan()" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition flex items-center justify-center space-x-1.5 mt-2">
+            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+            <span>대출이자 계산하기</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 우측 결과 -->
+      <div class="lg:col-span-7 space-y-4">
+        <div class="bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-3xl p-6 shadow-lg relative overflow-hidden">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-300">월 예상 상환금액</span>
+            <span id="loan-method-badge" class="px-2.5 py-1 rounded-full bg-white/20 text-xs font-bold">원리금 균등상환</span>
+          </div>
+          <div class="flex items-baseline space-x-1 my-2">
+            <span id="result-loan-monthly" class="text-3xl sm:text-4xl font-black font-mono tracking-tight">4,364,781</span>
+            <span class="text-xl font-bold">원</span>
+          </div>
+          <div class="pt-3 border-t border-white/20 flex flex-wrap justify-between text-xs text-blue-200">
+            <span>총 대출 이자: <strong id="result-loan-interest" class="text-white font-mono">4,754,744원</strong></span>
+            <span>총 상환 원리금: <strong id="result-loan-total" class="text-white font-mono">104,754,744원</strong></span>
+          </div>
+        </div>
+
+        <!-- 회차별 스케줄 테이블 -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider">회차별 상환 내역 스케줄</h3>
+            <span class="text-[11px] text-slate-400">총 24회차</span>
+          </div>
+          <div class="max-h-60 overflow-y-auto">
+            <table class="w-full text-xs text-left">
+              <thead class="sticky top-0 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                <tr>
+                  <th class="p-2">회차</th>
+                  <th class="p-2">월 상환금</th>
+                  <th class="p-2">납입 원금</th>
+                  <th class="p-2">이자</th>
+                  <th class="p-2">대출 잔액</th>
+                </tr>
+              </thead>
+              <tbody id="loan-schedule-tbody" class="divide-y divide-slate-100 dark:divide-slate-800 font-mono">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 가이드 아티클 -->
+    <article class="mt-12 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm leading-relaxed text-sm text-slate-700 dark:text-slate-300 space-y-8">
+      <div>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mb-3">
+          대출 상환 방식 3가지 완벽 비교 및 스트레스 DSR 핵심 가이드
+        </h2>
+        <p>
+          신용대출, 전세대출, 주택담보대출을 받을 때 어떤 상환 방식을 선택하느냐에 따라 매달 지출해야 하는 생활비 규모와 최종적으로 은행에 납부하는 총 이자 금액이 수백만~수천만 원까지 달라집니다.
+        </p>
+      </div>
+
+      <section>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2 flex items-center space-x-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 text-xs flex items-center justify-center font-bold">1</span>
+          <span>원리금균등 vs 원금균등 vs 만기일시 상환 특징 비교</span>
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs my-3">
+          <div class="p-4 rounded-2xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900">
+            <strong class="text-blue-700 dark:text-blue-300 block mb-1 text-sm font-bold">1. 원리금 균등상환</strong>
+            <p class="text-slate-600 dark:text-slate-400 mb-2">원금과 이자의 합계 금액을 매달 동일하게 나누어 갚는 방식입니다.</p>
+            <span class="text-[11px] font-semibold text-slate-700 dark:text-slate-300">장점: 매월 고정 지출로 가계부 계획 수립 용이</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900">
+            <strong class="text-emerald-700 dark:text-emerald-300 block mb-1 text-sm font-bold">2. 원금 균등상환</strong>
+            <p class="text-slate-600 dark:text-slate-400 mb-2">매달 갚는 원금 액수를 고정하고, 남은 잔액에 대한 이자를 더해 갚는 방식입니다.</p>
+            <span class="text-[11px] font-semibold text-slate-700 dark:text-slate-300">장점: 3가지 방식 중 총 납부 이자가 가장 적음</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900">
+            <strong class="text-amber-700 dark:text-amber-300 block mb-1 text-sm font-bold">3. 만기일시 상환</strong>
+            <p class="text-slate-600 dark:text-slate-400 mb-2">대출 기간 동안에는 오직 이자만 내다가 만기 날에 원금을 한 번에 갚는 방식입니다.</p>
+            <span class="text-[11px] font-semibold text-slate-700 dark:text-slate-300">단점: 총 납부 이자가 가장 많고 만기 상환 부담</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2 flex items-center space-x-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 text-xs flex items-center justify-center font-bold">2</span>
+          <span>스트레스 DSR(총부채원리금상환비율) 개념 및 대출 한도 팁</span>
+        </h3>
+        <p class="text-xs">
+          금융당국이 시행 중인 <strong>스트레스 DSR</strong> 제도는 변동금리 대출을 이용할 때 향후 금리 인상 위험을 감안하여 기존 금리에 가산금리(스트레스 금리)를 덧붙여 대출 한도를 산정하는 제도입니다.
+          가산금리가 붙으면 연간 원리금 상환 부담액이 장부상 높게 책정되어 실제 대출받을 수 있는 최대 한도가 수천만 원 감소할 수 있으므로, 대출 신청 전 고정금리 상품이나 혼합형 금리를 검토하는 것이 유리할 수 있습니다.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 text-xs text-slate-500 mt-12">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span>© 2026 MoneyDoctor. All rights reserved.</span>
+      <div class="flex space-x-4">
+        <a href="/about.html" class="hover:text-blue-600">서비스 소개</a>
+        <a href="/privacy.html" class="hover:text-blue-600">개인정보처리방침</a>
+        <a href="/terms.html" class="hover:text-blue-600">이용약관</a>
+        <a href="/contact.html" class="hover:text-blue-600">문의하기</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    function formatNumber(num) {
+      if (isNaN(num)) return '0';
+      return Math.round(num).toLocaleString('ko-KR');
+    }
+
+    function cleanNumber(str) {
+      return Number(String(str).replace(/[^0-9]/g, '')) || 0;
+    }
+
+    const loanInput = document.getElementById('loan-amount');
+    loanInput.addEventListener('input', (e) => {
+      const val = cleanNumber(e.target.value);
+      e.target.value = val === 0 ? '' : formatNumber(val);
+      calculateLoan();
+    });
+
+    ['loan-rate', 'loan-months'].forEach(id => {
+      document.getElementById(id).addEventListener('input', calculateLoan);
+    });
+
+    document.querySelectorAll('input[name="loan-type"]').forEach(r => {
+      r.addEventListener('change', calculateLoan);
+    });
+
+    function setLoan(amount) {
+      loanInput.value = formatNumber(amount);
+      calculateLoan();
+    }
+
+    function calculateLoan() {
+      const principal = cleanNumber(loanInput.value);
+      const annualRate = (Number(document.getElementById('loan-rate').value) || 0) / 100;
+      const months = Math.max(1, Number(document.getElementById('loan-months').value) || 12);
+      const loanTypeEl = document.querySelector('input[name="loan-type"]:checked');
+      const loanType = loanTypeEl ? loanTypeEl.value : 'equal-total';
+
+      const monthlyRate = annualRate / 12;
+      let monthlyPay = 0;
+      let totalInterest = 0;
+      const schedule = [];
+      let balance = principal;
+
+      if (loanType === 'equal-total') {
+        if (monthlyRate === 0) {
+          monthlyPay = principal / months;
+          totalInterest = 0;
+        } else {
+          monthlyPay = principal * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+          totalInterest = (monthlyPay * months) - principal;
+        }
+        document.getElementById('loan-method-badge').innerText = '원리금 균등상환';
+
+        for (let i = 1; i <= months; i++) {
+          const interestPart = balance * monthlyRate;
+          const principalPart = monthlyPay - interestPart;
+          balance = Math.max(0, balance - principalPart);
+          schedule.push({ round: i, pay: monthlyPay, principal: principalPart, interest: interestPart, balance: balance });
+        }
+      } else if (loanType === 'equal-principal') {
+        const principalMonthly = principal / months;
+        totalInterest = (principal * monthlyRate * (months + 1)) / 2;
+        monthlyPay = principalMonthly + (principal * monthlyRate);
+        document.getElementById('loan-method-badge').innerText = '원금 균등상환 (첫달 기준)';
+
+        for (let i = 1; i <= months; i++) {
+          const interestPart = balance * monthlyRate;
+          const pay = principalMonthly + interestPart;
+          balance = Math.max(0, balance - principalMonthly);
+          schedule.push({ round: i, pay: pay, principal: principalMonthly, interest: interestPart, balance: balance });
+        }
+      } else {
+        monthlyPay = principal * monthlyRate;
+        totalInterest = principal * annualRate * (months / 12);
+        document.getElementById('loan-method-badge').innerText = '만기일시 상환';
+
+        for (let i = 1; i <= months; i++) {
+          const isLast = i === months;
+          const pay = isLast ? monthlyPay + principal : monthlyPay;
+          const principalPart = isLast ? principal : 0;
+          balance = isLast ? 0 : principal;
+          schedule.push({ round: i, pay: pay, principal: principalPart, interest: monthlyPay, balance: balance });
+        }
+      }
+
+      document.getElementById('result-loan-monthly').innerText = formatNumber(monthlyPay);
+      document.getElementById('result-loan-interest').innerText = formatNumber(totalInterest) + '원';
+      document.getElementById('result-loan-total').innerText = formatNumber(principal + totalInterest) + '원';
+
+      const tbody = document.getElementById('loan-schedule-tbody');
+      tbody.innerHTML = '';
+      schedule.forEach(r => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 dark:hover:bg-slate-800/50';
+        tr.innerHTML = `
+          <td class="p-2">${r.round}회차</td>
+          <td class="p-2 font-semibold text-slate-900 dark:text-white">${formatNumber(r.pay)}원</td>
+          <td class="p-2">${formatNumber(r.principal)}원</td>
+          <td class="p-2 text-rose-500">${formatNumber(r.interest)}원</td>
+          <td class="p-2">${formatNumber(r.balance)}원</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', calculateLoan);
+  </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서비스 소개 및 공식 데이터 출처 - 머니닥터 (MoneyDoctor)</title>
+  <meta name="description" content="머니닥터(MoneyDoctor)의 서비스 소개, 개발 취지 및 대한민국 정부 공식 데이터 출처(국세청, 고용노동부, 건강보험, 국민연금) 안내입니다.">
+  <link rel="canonical" href="https://hap-py.us/about.html">
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WE4M5MSH3V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WE4M5MSH3V');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3800059466156754" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen font-sans flex flex-col transition-colors duration-200">
+
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-2.5">
+        <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-sm">
+          <i data-lucide="calculator" class="w-5 h-5"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-black text-lg tracking-tight text-slate-900 dark:text-white leading-none">머니닥터</span>
+          <span class="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mt-0.5">MoneyDoctor</span>
+        </div>
+      </a>
+      <div class="flex items-center space-x-3">
+        <a href="/" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition">
+          ← 계산기 홈으로
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm">
+      <div class="flex items-center space-x-2 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-2">
+        <i data-lucide="info" class="w-4 h-4"></i>
+        <span>About Service</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-4">서비스 소개 및 데이터 출처</h1>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 leading-relaxed">
+        머니닥터(MoneyDoctor)는 매년 복잡하게 변경되는 대한민국 세법과 4대보험 고시 요율을 누구나 1초 만에 쉽고 정확하게 시뮬레이션할 수 있도록 설계된 공익 핀테크 웹 도구입니다.
+      </p>
+
+      <div class="space-y-8 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        <section>
+          <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-3 flex items-center space-x-2">
+            <i data-lucide="target" class="w-5 h-5 text-blue-600"></i>
+            <span>머니닥터의 개발 취지와 핵심 가치</span>
+          </h2>
+          <p class="mb-3">
+            직장인, 프리랜서, 구직자들은 연봉 협상, 이직, 퇴직, 실업급여 신청 등의 중요한 경제적 결정을 내릴 때 실제 내 손에 들어오는 돈(실수령액)이 얼마인지 정확히 알기 어렵습니다.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-4">
+            <div class="p-4 rounded-2xl bg-blue-50 dark:bg-blue-950/40 border border-blue-100 dark:border-blue-900">
+              <span class="font-bold text-blue-700 dark:text-blue-400 text-sm block mb-1">1초 즉시 계산</span>
+              <span class="text-xs text-slate-600 dark:text-slate-400">회원가입이나 앱 설치 없이 브라우저에서 즉시 실시간 연산</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100 dark:border-emerald-900">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 text-sm block mb-1">철저한 개인정보 보호</span>
+              <span class="text-xs text-slate-600 dark:text-slate-400">서버로 어떠한 개인 소득 정보도 전송하거나 저장하지 않음</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900">
+              <span class="font-bold text-indigo-700 dark:text-indigo-400 text-sm block mb-1">법정 공식 준수</span>
+              <span class="text-xs text-slate-600 dark:text-slate-400">대한민국 행정부 공식 고시 기준 100% 반영</span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-3 flex items-center space-x-2">
+            <i data-lucide="database" class="w-5 h-5 text-blue-600"></i>
+            <span>공식 데이터 출처 및 법적 기준 (2026년 최신)</span>
+          </h2>
+          <p class="mb-4">
+            머니닥터에 탑재된 모든 계산 엔진은 아래 대한민국 공공기관의 공식 법률 및 행정고시를 기준으로 구축되었습니다:
+          </p>
+          <div class="space-y-3">
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-start space-x-3">
+              <span class="px-2 py-0.5 rounded bg-blue-600 text-white text-[11px] font-bold shrink-0 mt-0.5">국세청</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white block text-xs">2026년 근로소득 간이세액표 및 소득세법</strong>
+                <p class="text-xs text-slate-500 mt-0.5">5단계 근로소득공제(500만 이하 70% ~ 1억 초과 2%), 기본 인적공제(150만 원), 근로소득세액공제(최대 74만 원 한도) 적용</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-start space-x-3">
+              <span class="px-2 py-0.5 rounded bg-emerald-600 text-white text-[11px] font-bold shrink-0 mt-0.5">건강보험공단</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white block text-xs">국민건강보험법 시행령</strong>
+                <p class="text-xs text-slate-500 mt-0.5">건강보험료율 근로자 부담분(3.545%), 노인장기요양보험료율(건강보험료의 12.95%) 공식 적용</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-start space-x-3">
+              <span class="px-2 py-0.5 rounded bg-amber-600 text-white text-[11px] font-bold shrink-0 mt-0.5">국민연금공단</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white block text-xs">국민연금법 기준소득월액 상·하한액 고시</strong>
+                <p class="text-xs text-slate-500 mt-0.5">국민연금 요율 근로자 부담분(4.5%), 기준소득월액 상한액(6,170,000원 - 최대 277,650원) 및 하한액(390,000원) 준수</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-start space-x-3">
+              <span class="px-2 py-0.5 rounded bg-indigo-600 text-white text-[11px] font-bold shrink-0 mt-0.5">고용노동부</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white block text-xs">고용보험법 및 근로기준법</strong>
+                <p class="text-xs text-slate-500 mt-0.5">고용보험 실업급여 요율(근로자 0.9%), 실업급여 상한액(1일 66,000원) 및 최저임금 80% 하한액(1일 64,192원) 공식 준수</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="pt-4 border-t border-slate-100 dark:border-slate-800">
+          <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-2">제공 중인 금융 계산기 도구 목록</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <li><a href="/salary.html" class="text-blue-600 hover:underline flex items-center space-x-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i><span>2026 연봉 실수령액 계산기 & 세법 가이드</span></a></li>
+            <li><a href="/unemployment.html" class="text-blue-600 hover:underline flex items-center space-x-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i><span>2026 실업급여 모의계산기 & 수급자격 가이드</span></a></li>
+            <li><a href="/severance.html" class="text-blue-600 hover:underline flex items-center space-x-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i><span>법정 퇴직금 계산기 & 퇴직소득세 절세 가이드</span></a></li>
+            <li><a href="/loan.html" class="text-blue-600 hover:underline flex items-center space-x-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i><span>대출 이자 및 상환 스케줄러 & DSR 가이드</span></a></li>
+            <li><a href="/freelance.html" class="text-blue-600 hover:underline flex items-center space-x-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i><span>3.3% 프리랜서 사업소득세 역산 계산기</span></a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 text-xs text-slate-500">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span>© 2026 MoneyDoctor. All rights reserved.</span>
+      <div class="flex space-x-4">
+        <a href="/about.html" class="hover:text-blue-600 font-bold text-slate-800 dark:text-slate-200">서비스 소개</a>
+        <a href="/privacy.html" class="hover:text-blue-600">개인정보처리방침</a>
+        <a href="/terms.html" class="hover:text-blue-600">이용약관</a>
+        <a href="/contact.html" class="hover:text-blue-600">문의하기</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>

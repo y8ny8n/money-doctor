@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 연봉 실수령액 계산기 & 월급 세금 공제 조견표 - 머니닥터</title>
+  <meta name="description" content="2026년 최신 국세청 간이세액표 및 4대보험 개정 요율이 반영된 2026 연봉 실수령액 계산기입니다. 비과세 식대, 부양가족 공제, 세전·세후 월급 비교 및 연봉별 실수령액 조견표를 무료로 확인하세요.">
+  <meta name="keywords" content="2026 연봉 실수령액, 2026 연봉 계산기, 월급 실수령액, 4대보험 계산기, 2026 간이세액표, 비과세 식대, 국민연금 상한액">
+  <link rel="canonical" href="https://hap-py.us/salary.html">
+
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="qj5kBt9ksP5bnTZGCMm6R74nbQ4TTfzL4-rjngLmP94" />
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WE4M5MSH3V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WE4M5MSH3V');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3800059466156754" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen font-sans flex flex-col transition-colors duration-200">
+
+  <!-- 네비게이션 헤더 -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-2.5">
+        <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-sm">
+          <i data-lucide="calculator" class="w-5 h-5"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-black text-lg tracking-tight text-slate-900 dark:text-white leading-none">머니닥터</span>
+          <span class="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mt-0.5">MoneyDoctor</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center space-x-1 text-xs font-semibold">
+        <a href="/salary.html" class="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">연봉 실수령액</a>
+        <a href="/unemployment.html" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">실업급여</a>
+        <a href="/severance.html" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">퇴직금</a>
+        <a href="/loan.html" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">대출이자</a>
+        <a href="/freelance.html" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">3.3% 프리랜서</a>
+      </nav>
+      <a href="/" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">
+        전체 계산기 홈
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 py-8 w-full">
+    <!-- 타이틀 섹션 -->
+    <div class="mb-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 text-xs font-bold mb-2">
+        <i data-lucide="badge-percent" class="w-3.5 h-3.5"></i>
+        <span>2026년 최신 4대보험 & 국세청 간이세액표 100% 반영</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+        2026 연봉 실수령액 계산기
+      </h1>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+        세전 연봉을 입력하시면 국민연금, 건강보험, 고용보험 및 근로소득세를 공제한 실제 월 입금액을 1초 만에 산출합니다.
+      </p>
+    </div>
+
+    <!-- 계산기 입력 & 결과 그리드 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- 좌측: 입력 카드 -->
+      <div class="lg:col-span-5 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+        <h2 class="text-base font-bold text-slate-900 dark:text-white mb-4 flex items-center space-x-2">
+          <i data-lucide="sliders-horizontal" class="w-4 h-4 text-blue-600"></i>
+          <span>급여 조건 입력</span>
+        </h2>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+              세전 연봉 (원)
+            </label>
+            <div class="relative">
+              <input type="text" id="salary-input" value="40,000,000" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800 font-mono font-bold text-base focus:ring-2 focus:ring-blue-500 focus:outline-none pr-8">
+              <span class="absolute right-3.5 top-3 text-xs text-slate-400">원</span>
+            </div>
+            <div class="grid grid-cols-4 gap-1.5 mt-2">
+              <button onclick="setSalary(30000000)" class="px-2 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-medium">3,000만</button>
+              <button onclick="setSalary(40000000)" class="px-2 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-medium">4,000만</button>
+              <button onclick="setSalary(50000000)" class="px-2 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-medium">5,000만</button>
+              <button onclick="setSalary(70000000)" class="px-2 py-1 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-medium">7,000만</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label class="text-xs font-bold text-slate-700 dark:text-slate-300">비과세액 (월 식대 등)</label>
+              <span class="text-[11px] text-blue-600 font-medium">식대 한도 월 20만 원</span>
+            </div>
+            <div class="relative">
+              <input type="text" id="salary-taxfree" value="200,000" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800 font-mono font-semibold text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none pr-8">
+              <span class="absolute right-3.5 top-3 text-xs text-slate-400">원</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">부양가족 수 (본인 포함)</label>
+              <select id="salary-dependents" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800 text-xs font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <option value="1" selected>1명 (본인)</option>
+                <option value="2">2명</option>
+                <option value="3">3명</option>
+                <option value="4">4명</option>
+                <option value="5">5명 이상</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">20세 이하 자녀 수</label>
+              <select id="salary-children" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800 text-xs font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <option value="0" selected>0명</option>
+                <option value="1">1명</option>
+                <option value="2">2명</option>
+                <option value="3">3명 이상</option>
+              </select>
+            </div>
+          </div>
+
+          <button onclick="calculateSalary()" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition flex items-center justify-center space-x-1.5 mt-2">
+            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+            <span>실수령액 실시간 재계산</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 우측: 결과 카드 -->
+      <div class="lg:col-span-7 space-y-4">
+        <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-6 text-white shadow-lg relative overflow-hidden">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-200">2026 예상 월 실수령액</span>
+            <span id="salary-eff-rate" class="px-2.5 py-1 rounded-full bg-white/20 text-xs font-bold">공제율 11.2%</span>
+          </div>
+          <div class="flex items-baseline space-x-1 my-2">
+            <span id="result-monthly-net" class="text-3xl sm:text-4xl font-black font-mono tracking-tight">2,960,000</span>
+            <span class="text-xl font-bold">원</span>
+          </div>
+          <div class="pt-3 border-t border-white/20 flex flex-wrap justify-between text-xs text-blue-100">
+            <span>세전 월급: <strong id="result-monthly-gross" class="text-white font-mono">3,333,333원</strong></span>
+            <span>월 총 공제액: <strong id="result-monthly-deduct" class="text-white font-mono">373,333원</strong></span>
+          </div>
+        </div>
+
+        <!-- 4대보험 및 세금 공제 상세 내역 -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+          <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">월 급여 공제 항목별 상세 내역</h3>
+          <div class="space-y-3 text-xs">
+            <div class="flex justify-between items-center py-1.5 border-b border-slate-100 dark:border-slate-800">
+              <span class="text-slate-600 dark:text-slate-400">국민연금 (4.5%)</span>
+              <strong id="deduct-pension" class="font-mono text-slate-900 dark:text-white">141,000원</strong>
+            </div>
+            <div class="flex justify-between items-center py-1.5 border-b border-slate-100 dark:border-slate-800">
+              <span class="text-slate-600 dark:text-slate-400">건강보험 (3.545%)</span>
+              <strong id="deduct-health" class="font-mono text-slate-900 dark:text-white">111,070원</strong>
+            </div>
+            <div class="flex justify-between items-center py-1.5 border-b border-slate-100 dark:border-slate-800">
+              <span class="text-slate-600 dark:text-slate-400">장기요양보험 (건보의 12.95%)</span>
+              <strong id="deduct-care" class="font-mono text-slate-900 dark:text-white">14,380원</strong>
+            </div>
+            <div class="flex justify-between items-center py-1.5 border-b border-slate-100 dark:border-slate-800">
+              <span class="text-slate-600 dark:text-slate-400">고용보험 (0.9%)</span>
+              <strong id="deduct-emp" class="font-mono text-slate-900 dark:text-white">28,200원</strong>
+            </div>
+            <div class="flex justify-between items-center py-1.5 border-b border-slate-100 dark:border-slate-800">
+              <span class="text-slate-600 dark:text-slate-400">근로소득세 (간이세액표 5단계 누진공제)</span>
+              <strong id="deduct-tax" class="font-mono text-slate-900 dark:text-white">71,530원</strong>
+            </div>
+            <div class="flex justify-between items-center py-1.5">
+              <span class="text-slate-600 dark:text-slate-400">지방소득세 (소득세의 10%)</span>
+              <strong id="deduct-localtax" class="font-mono text-slate-900 dark:text-white">7,150원</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= 고품질 심층 세무 가이드 (애드센스 필수 콘텐츠) ================= -->
+    <article class="mt-12 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm leading-relaxed text-sm text-slate-700 dark:text-slate-300 space-y-8">
+      <div>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mb-3">
+          2026년 연봉 실수령액 계산 방식 및 4대보험 개정 완벽 가이드
+        </h2>
+        <p>
+          직장인들이 근로계약서에 서명하는 '세전 연봉'과 매월 25일 급여일에 통장에 입금되는 '실수령액' 사이에는 상당한 차이가 발생합니다. 
+          이는 대한민국 법률에 따라 <strong>4대 사회보험료</strong>와 <strong>국세청 소득세(간이세액표 기준)</strong>가 원천징수되기 때문입니다.
+        </p>
+      </div>
+
+      <section>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2 flex items-center space-x-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 text-xs flex items-center justify-center font-bold">1</span>
+          <span>2026년 4대보험 공제 요율 및 상·하한액 규정</span>
+        </h3>
+        <p class="mb-3">
+          2026년도 직장가입자 기준 4대보험 요율과 근로자 본인 부담 비율은 다음과 같습니다:
+        </p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs text-left border-collapse border border-slate-200 dark:border-slate-800">
+            <thead class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+              <tr>
+                <th class="p-2.5 border border-slate-200 dark:border-slate-700">구분</th>
+                <th class="p-2.5 border border-slate-200 dark:border-slate-700">근로자 부담 요율</th>
+                <th class="p-2.5 border border-slate-200 dark:border-slate-700">2026년 기준소득월액 한도</th>
+                <th class="p-2.5 border border-slate-200 dark:border-slate-700">비고</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700 font-bold">국민연금</td>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700">4.5%</td>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700">하한 39만 원 ~ 상한 617만 원</td>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700">최대 월 277,650원 한도 고정</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700 font-bold">건강보험</td>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700">3.545%</td>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700">보수월액 기준 상한액 적용</td>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700">총 7.09% 중 근로자 절반 부담</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700 font-bold">장기요양보험</td>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700">건보료의 12.95%</td>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700">건강보험료 산출액에 연동</td>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700">노인장기요양보호법 고시 요율</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700 font-bold">고용보험</td>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700">0.9%</td>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700">별도 상한 없음</td>
+                <td class="p-2.5 border border-slate-200 dark:border-slate-700">실업급여 재원 마련</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2 flex items-center space-x-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 text-xs flex items-center justify-center font-bold">2</span>
+          <span>비과세 식대 20만 원 한도의 절세 효과</span>
+        </h3>
+        <p>
+          소득세법 개정으로 비과세 식대 한도가 월 10만 원에서 **월 20만 원**으로 확대되었습니다. 
+          비과세 소득이란 4대보험료와 소득세를 계산할 때 과세 대상에서 제외되는 금액을 말합니다.
+          식대 20만 원이 비과세로 적용되면 월 4대보험료 및 소득세가 매달 약 3만~5만 원가량 절감되어 연간 40만~60만 원의 실질적인 실수령액 인상 효과가 발생합니다.
+        </p>
+      </section>
+
+      <section>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2 flex items-center space-x-2">
+          <span class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 text-xs flex items-center justify-center font-bold">3</span>
+          <span>연봉별 대략적인 월 실수령액 조견표 (비과세 20만, 부양가족 1인 기준)</span>
+        </h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[10px]">연봉 3,000만 원</span>
+            <strong class="text-sm font-mono text-slate-900 dark:text-white">약 2,240,000원</strong>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[10px]">연봉 4,000만 원</span>
+            <strong class="text-sm font-mono text-slate-900 dark:text-white">약 2,960,000원</strong>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[10px]">연봉 5,000만 원</span>
+            <strong class="text-sm font-mono text-slate-900 dark:text-white">약 3,580,000원</strong>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[10px]">연봉 6,000만 원</span>
+            <strong class="text-sm font-mono text-slate-900 dark:text-white">약 4,210,000원</strong>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[10px]">연봉 7,000만 원</span>
+            <strong class="text-sm font-mono text-slate-900 dark:text-white">약 4,830,000원</strong>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[10px]">연봉 8,000만 원</span>
+            <strong class="text-sm font-mono text-slate-900 dark:text-white">약 5,420,000원</strong>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[10px]">연봉 1억 원</span>
+            <strong class="text-sm font-mono text-slate-900 dark:text-white">약 6,610,000원</strong>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[10px]">연봉 1억 5천만 원</span>
+            <strong class="text-sm font-mono text-slate-900 dark:text-white">약 9,280,000원</strong>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 text-xs text-slate-500 mt-12">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span>© 2026 MoneyDoctor. All rights reserved.</span>
+      <div class="flex space-x-4">
+        <a href="/about.html" class="hover:text-blue-600">서비스 소개</a>
+        <a href="/privacy.html" class="hover:text-blue-600">개인정보처리방침</a>
+        <a href="/terms.html" class="hover:text-blue-600">이용약관</a>
+        <a href="/contact.html" class="hover:text-blue-600">문의하기</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    function formatNumber(num) {
+      if (isNaN(num)) return '0';
+      return Math.round(num).toLocaleString('ko-KR');
+    }
+
+    function cleanNumber(str) {
+      return Number(String(str).replace(/[^0-9]/g, '')) || 0;
+    }
+
+    ['salary-input', 'salary-taxfree'].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('input', (e) => {
+        const val = cleanNumber(e.target.value);
+        e.target.value = val === 0 ? '' : formatNumber(val);
+        calculateSalary();
+      });
+    });
+
+    ['salary-dependents', 'salary-children'].forEach(id => {
+      document.getElementById(id).addEventListener('change', calculateSalary);
+    });
+
+    function setSalary(amount) {
+      document.getElementById('salary-input').value = formatNumber(amount);
+      calculateSalary();
+    }
+
+    function calculateSalary() {
+      const annualSalary = cleanNumber(document.getElementById('salary-input').value);
+      const taxFreeMonthly = cleanNumber(document.getElementById('salary-taxfree').value);
+      const dependents = Number(document.getElementById('salary-dependents').value) || 1;
+      const children = Number(document.getElementById('salary-children').value) || 0;
+
+      if (annualSalary <= 0) return;
+
+      const monthlyGross = Math.floor(annualSalary / 12);
+      const taxableMonthly = Math.max(0, monthlyGross - taxFreeMonthly);
+      const annualTaxable = taxableMonthly * 12;
+
+      // 4대보험
+      const pensionBase = Math.min(Math.max(taxableMonthly, 390000), 6170000);
+      const pension = Math.floor(pensionBase * 0.045);
+      const health = Math.floor(taxableMonthly * 0.03545);
+      const care = Math.floor(health * 0.1295);
+      const emp = Math.floor(taxableMonthly * 0.009);
+
+      // 근로소득공제
+      let earnedIncomeDeduction = 0;
+      if (annualTaxable <= 5000000) earnedIncomeDeduction = annualTaxable * 0.7;
+      else if (annualTaxable <= 15000000) earnedIncomeDeduction = 3500000 + (annualTaxable - 5000000) * 0.4;
+      else if (annualTaxable <= 45000000) earnedIncomeDeduction = 7500000 + (annualTaxable - 15000000) * 0.15;
+      else if (annualTaxable <= 100000000) earnedIncomeDeduction = 12000000 + (annualTaxable - 45000000) * 0.05;
+      else earnedIncomeDeduction = Math.min(20000000, 14750000 + (annualTaxable - 100000000) * 0.02);
+
+      const personalDeduction = dependents * 1500000;
+      const annualPension = pension * 12;
+      const specialDeduction = (health + care + emp) * 12;
+
+      const taxBase = Math.max(0, annualTaxable - earnedIncomeDeduction - personalDeduction - annualPension - specialDeduction);
+
+      let calculatedTax = 0;
+      if (taxBase <= 14000000) calculatedTax = taxBase * 0.06;
+      else if (taxBase <= 50000000) calculatedTax = 840000 + (taxBase - 14000000) * 0.15;
+      else if (taxBase <= 88000000) calculatedTax = 6240000 + (taxBase - 50000000) * 0.24;
+      else if (taxBase <= 150000000) calculatedTax = 15360000 + (taxBase - 88000000) * 0.35;
+      else if (taxBase <= 300000000) calculatedTax = 37060000 + (taxBase - 150000000) * 0.38;
+      else calculatedTax = 94060000 + (taxBase - 300000000) * 0.40;
+
+      let taxCredit = 0;
+      if (calculatedTax <= 1300000) taxCredit = calculatedTax * 0.55;
+      else taxCredit = 715000 + (calculatedTax - 1300000) * 0.30;
+
+      if (annualTaxable <= 33000000) taxCredit = Math.min(taxCredit, 740000);
+      else if (annualTaxable <= 70000000) taxCredit = Math.min(taxCredit, Math.max(660000, 740000 - (annualTaxable - 33000000) * 0.008));
+      else taxCredit = Math.min(taxCredit, Math.max(500000, 660000 - (annualTaxable - 70000000) * 0.5));
+
+      let childCredit = 0;
+      if (children === 1) childCredit = 150000;
+      else if (children === 2) childCredit = 350000;
+      else if (children >= 3) childCredit = 350000 + (children - 2) * 300000;
+
+      const finalAnnualTax = Math.max(0, calculatedTax - taxCredit - childCredit);
+      const monthlyTax = Math.floor(finalAnnualTax / 12);
+      const monthlyLocalTax = Math.floor(monthlyTax * 0.1);
+
+      const totalDeduction = pension + health + care + emp + monthlyTax + monthlyLocalTax;
+      const monthlyNet = monthlyGross - totalDeduction;
+
+      document.getElementById('result-monthly-net').innerText = formatNumber(monthlyNet);
+      document.getElementById('result-monthly-gross').innerText = formatNumber(monthlyGross) + '원';
+      document.getElementById('result-monthly-deduct').innerText = formatNumber(totalDeduction) + '원';
+      document.getElementById('salary-eff-rate').innerText = '공제율 ' + ((totalDeduction / monthlyGross) * 100).toFixed(1) + '%';
+
+      document.getElementById('deduct-pension').innerText = formatNumber(pension) + '원';
+      document.getElementById('deduct-health').innerText = formatNumber(health) + '원';
+      document.getElementById('deduct-care').innerText = formatNumber(care) + '원';
+      document.getElementById('deduct-emp').innerText = formatNumber(emp) + '원';
+      document.getElementById('deduct-tax').innerText = formatNumber(monthlyTax) + '원';
+      document.getElementById('deduct-localtax').innerText = formatNumber(monthlyLocalTax) + '원';
+    }
+
+    window.addEventListener('DOMContentLoaded', calculateSalary);
+  </script>
+</body>
+</html>
